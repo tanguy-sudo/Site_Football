@@ -1,0 +1,16 @@
+{
+    "name": "tangu/site_football",
+    "authors": [
+        {
+            "name": "tanguy",
+            "email": "tanguy.jouvin@hotmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Router\\": "routes/",
+            "Database\\": "database/"
+        }
+    },
+    "require": {}
+}
