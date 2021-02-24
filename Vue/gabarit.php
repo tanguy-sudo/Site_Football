@@ -12,13 +12,14 @@
         <title><?= $titre ?></title>
     </head>  
     <nav>
-        <div class="nav-wrapper teal lighten-2">
-        <a href="/" class="brand-logo">Logo</a>
-        <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li><a href="/">Connexion</a></li>
-        </ul>
-        </div>
-    </nav>
+    <div class="nav-wrapper">
+      <a href="" class="brand-logo">Logo</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="convocation/index/">Convocation</a></li>
+        <li><a href="">Connexion</a></li>
+      </ul>
+    </div>
+  </nav>
     <body>
         <div id="global">
             <div id="contenu">

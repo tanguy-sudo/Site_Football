@@ -4,25 +4,10 @@ require_once 'Controleur.php';
 require_once 'Requete.php';
 require_once 'Vue.php';
 
-/*
- * Classe de routage des requêtes entrantes.
- * 
- * Inspirée du framework PHP de Nathan Davison
- * (https://github.com/ndavison/Nathan-MVC)
- * 
- * @version 1.0
- * @author Baptiste Pesquet
- */
 class Routeur {
 
-    /**
-     * Méthode principale appelée par le contrôleur frontal
-     * Examine la requête et exécute l'action appropriée
-     */
     public function routerRequete() {
         try {
-            // Fusion des paramètres GET et POST de la requête
-            // Permet de gérer uniformément ces deux types de requête HTTP
             $requete = new Requete(array_merge($_GET, $_POST));
 
             $controleur = $this->creerControleur($requete);
@@ -35,15 +20,7 @@ class Routeur {
         }
     }
 
-    /**
-     * Instancie le contrôleur approprié en fonction de la requête reçue
-     * 
-     * @param Requete $requete Requête reçue
-     * @return Instance d'un contrôleur
-     * @throws Exception Si la création du contrôleur échoue
-     */
     private function creerControleur(Requete $requete) {
-        // Grâce à la réécriture, toutes les URL entrantes sont du type :
         // index.php?controleur=XXX&action=YYY&id=ZZZ
 
         $controleur = "Accueil";  // Contrôleur par défaut
@@ -52,12 +29,10 @@ class Routeur {
             // Première lettre en majuscules
             $controleur = ucfirst(strtolower($controleur));
         }
-        // Création du nom du fichier du contrôleur
         // La convention de nommage des fichiers controleurs est : Controleur/Controleur<$controleur>.php
         $classeControleur = "Controleur" . $controleur;
         $fichierControleur = "Controleur/" . $classeControleur . ".php";
         if (file_exists($fichierControleur)) {
-            // Instanciation du contrôleur adapté à la requête
             require($fichierControleur);
             $controleur = new $classeControleur();
             $controleur->setRequete($requete);
@@ -68,12 +43,6 @@ class Routeur {
         }
     }
 
-    /**
-     * Détermine l'action à exécuter en fonction de la requête reçue
-     * 
-     * @param Requete $requete Requête reçue
-     * @return string Action à exécuter
-     */
     private function creerAction(Requete $requete) {
         $action = "index";  // Action par défaut
         if ($requete->existeParametre('action')) {
@@ -82,11 +51,6 @@ class Routeur {
         return $action;
     }
 
-    /**
-     * Gère une erreur d'exécution (exception)
-     * 
-     * @param Exception $exception Exception qui s'est produite
-     */
     private function gererErreur(Exception $exception) {
         $vue = new Vue('erreur');
         $vue->generer(array('msgErreur' => $exception->getMessage()));
