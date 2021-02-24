@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : mer. 24 fév. 2021 à 08:22
+-- Généré le : mer. 24 fév. 2021 à 23:46
 -- Version du serveur :  8.0.21
 -- Version de PHP : 7.4.9
 
@@ -50,26 +50,24 @@ CREATE TABLE IF NOT EXISTS `calendrierrencontre` (
   `id_rencontre` int NOT NULL AUTO_INCREMENT,
   `categorie` varchar(255) NOT NULL DEFAULT 'seniors',
   `competition` enum('Amical','Coupe de France','Coupe de l''Anjou','Coupe des Pays de la loire','Coupe des Réserves','D1 Groupe A','D4 Groupe E','D5 Groupe A') NOT NULL,
-  `equipe` enum('SeniorsA','SeniorsB','SeniorsC') NOT NULL,
+  `equipe` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `equipeAdverse` varchar(255) NOT NULL,
   `date` date NOT NULL,
   `heure` time NOT NULL,
   `terrain` varchar(255) NOT NULL,
   `site` varchar(255) NOT NULL,
-  `id_convocation` int DEFAULT NULL,
-  PRIMARY KEY (`id_rencontre`),
-  KEY `FKid_convocation` (`id_convocation`)
+  PRIMARY KEY (`id_rencontre`)
 ) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `calendrierrencontre`
 --
 
-INSERT INTO `calendrierrencontre` (`id_rencontre`, `categorie`, `competition`, `equipe`, `equipeAdverse`, `date`, `heure`, `terrain`, `site`, `id_convocation`) VALUES
-(1, 'seniors', 'Amical', 'SeniorsA', 'Ambillou ASVR 1', '2020-08-16', '14:45:00', 'Stade Alphonse leroi 1', 'Ambillou', NULL),
-(2, 'seniors', 'Coupe de l\'Anjou', 'SeniorsB', 'Valanjou AS 2', '2020-08-23', '15:00:00', 'Stade de contades', 'Allonnes', NULL),
-(3, 'seniors', 'Coupe des Pays de la loire', 'SeniorsA', 'Angers NDC 2', '2020-08-23', '15:00:00', 'Stade andré bertin 1', 'Bellevigne en Layon', NULL),
-(4, 'seniors', 'D4 Groupe E', 'SeniorsC', 'St Hilaire Vihiers 4', '2020-08-23', '15:00:00', 'Terrain A', 'Martigne', NULL);
+INSERT INTO `calendrierrencontre` (`id_rencontre`, `categorie`, `competition`, `equipe`, `equipeAdverse`, `date`, `heure`, `terrain`, `site`) VALUES
+(1, 'seniors', 'Amical', 'SeniorsA', 'Ambillou ASVR 1', '2020-08-16', '14:45:00', 'Stade Alphonse leroi 1', 'Ambillou'),
+(2, 'seniors', 'Coupe de l\'Anjou', 'SeniorsB', 'Valanjou AS 2', '2020-08-23', '15:00:00', 'Stade de contades', 'Allonnes'),
+(3, 'seniors', 'Coupe des Pays de la loire', 'SeniorsA', 'Angers NDC 2', '2020-08-23', '15:00:00', 'Stade andré bertin 1', 'Bellevigne en Layon'),
+(4, 'seniors', 'D4 Groupe E', 'SeniorsC', 'St Hilaire Vihiers 4', '2020-08-23', '15:00:00', 'Terrain A', 'Martigne');
 
 -- --------------------------------------------------------
 
@@ -81,8 +79,17 @@ DROP TABLE IF EXISTS `convocation`;
 CREATE TABLE IF NOT EXISTS `convocation` (
   `id_convocation` int NOT NULL AUTO_INCREMENT,
   `messageRdv` varchar(255) NOT NULL,
-  PRIMARY KEY (`id_convocation`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `id_rencontre` int NOT NULL,
+  PRIMARY KEY (`id_convocation`),
+  KEY `FKid_rencontre` (`id_rencontre`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `convocation`
+--
+
+INSERT INTO `convocation` (`id_convocation`, `messageRdv`, `id_rencontre`) VALUES
+(1, 'Venez habillé il fait froid', 1);
 
 -- --------------------------------------------------------
 
@@ -98,7 +105,25 @@ CREATE TABLE IF NOT EXISTS `convoquee` (
   PRIMARY KEY (`id_convoquee`),
   KEY `FKid_Effectif` (`id_effectif`),
   KEY `FKid_convocation` (`id_convocation`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `convoquee`
+--
+
+INSERT INTO `convoquee` (`id_convoquee`, `id_effectif`, `id_convocation`) VALUES
+(1, 1, 1),
+(2, 2, 1),
+(3, 3, 1),
+(4, 4, 1),
+(5, 5, 1),
+(6, 6, 1),
+(7, 7, 1),
+(8, 8, 1),
+(9, 9, 1),
+(10, 10, 1),
+(11, 11, 1),
+(12, 12, 1);
 
 -- --------------------------------------------------------
 
