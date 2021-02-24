@@ -13,11 +13,19 @@
     </head>  
     <nav>
         <div class="nav-wrapper teal lighten-2">
+<<<<<<< HEAD
         <a href="/" class="brand-logo">Logo</a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
             <li><a href="/">Sass</a></li>
             <li><a href="/">Components</a></li>
             <li><a href="/">JavaScript</a></li>
+=======
+        <a href="#" class="brand-logo">Logo</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="sass.html">Sass</a></li>
+            <li><a href="badges.html">Components</a></li>
+            <li><a href="collapsible.html">JavaScript</a></li>
+>>>>>>> develop
         </ul>
         </div>
     </nav>
