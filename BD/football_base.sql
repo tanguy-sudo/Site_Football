@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : mar. 23 fév. 2021 à 23:06
+-- Généré le : mer. 24 fév. 2021 à 08:22
 -- Version du serveur :  8.0.21
 -- Version de PHP : 7.4.9
 
@@ -176,6 +176,8 @@ CREATE TABLE IF NOT EXISTS `utilisateur` (
   `nom` varchar(255) NOT NULL,
   `prenom` varchar(255) NOT NULL,
   `type` enum('entraineur','secretaire') CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `adresseEmail` varchar(50) NOT NULL,
+  `motDePasse` varchar(50) NOT NULL,
   PRIMARY KEY (`id_utilisateur`)
 ) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
@@ -183,9 +185,9 @@ CREATE TABLE IF NOT EXISTS `utilisateur` (
 -- Déchargement des données de la table `utilisateur`
 --
 
-INSERT INTO `utilisateur` (`id_utilisateur`, `nom`, `prenom`, `type`) VALUES
-(1, 'Brosseau', 'Aurélien', 'entraineur'),
-(2, 'Gaudreau', 'Frank', 'secretaire');
+INSERT INTO `utilisateur` (`id_utilisateur`, `nom`, `prenom`, `type`, `adresseEmail`, `motDePasse`) VALUES
+(1, 'Brosseau', 'Aurélien', 'entraineur', 'aurelien.brosseau@hotmail.com', 'mdpaurelien'),
+(2, 'Gaudreau', 'Frank', 'secretaire', 'frank.gaudreau@hotmail.com', 'mdpfrank');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
