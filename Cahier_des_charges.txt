@@ -1,0 +1,37 @@
+page d'acceuille :
+	bandeau en haut avec un lien "connectez-vous" pour se connecte en tant que joueur , secretaire ou entrainneur .
+	petite photo de foot en bas .
+
+
+page 2(connexion) : 
+		formulaire :adresse mail(lineedit) mot de passe (lineedit) boutton connexion. 
+
+	php : connexion a la base pour verification des addresses et redirection vers la bonne page
+
+page 3(page calendrier ):
+	bandeau avec acces via lien au autre page .
+	affichage calendrier 
+	si:
+	  -entrainneur acces au lien "noter absent" en bas du calendrier pour rajouté dans la base des absent.
+	  -secretaire acces au lien "modifier calendrier".
+	  	
+page 4(page convocation ):
+		bandeau avec acces via lien au autre page .
+		list deroulante pour choix du jour de la convocation
+		affichage en colone des convocation du jour choisi
+		si entraineur lien pour creation et modification convocation .
+
+
+page 5 (page modif absence)
+			bandeau en haut 
+			formulaire nom(lineedit),prenom(lineedit),date(list),type absence (checkbox ) si blessure nouvelle lineedti pour choix de la date de retour  , bouton comfirmation qui ajoute la'absence .
+
+page 6 (page creation convoc ):
+		bandeau en haut 
+		
+
+page 7(page creation tab calendrier):
+			bandeau en haut ,
+			formulaire type competition(list), date(lineedit), equipe(list), adversaire(lineedit),heure(lineedit),lieu(lineedit),terrain(lineedit).
+		bouton comfirmer pour ajout a la table calendrier.
+
