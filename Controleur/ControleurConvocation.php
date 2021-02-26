@@ -12,8 +12,12 @@ class ControleurConvocation extends Controleur {
     }
 
     public function index() {
-        $convocations = $this->convocation->getConvocation();
-        $this->genererVue(array('convocations' => $convocations));
+        //date('Y-m-d')
+        $convocations = $this->convocation->getConvocation("2020-08-23");
+        $effectifs = $this->convocation->geteffectifConv();
+        $this->genererVue(array('convocations' => $convocations,
+                                'effectifs'    => $effectifs
+                            ));
     }
 
 }

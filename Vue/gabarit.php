@@ -4,10 +4,9 @@
         <meta charset="UTF-8" />
         <base href="<?= $racineWeb ?>" >
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="Contenu/style.css" />       
-        <!-- Compiled and minified CSS -->
+
+        <link rel="stylesheet" href="../Contenu/style.css" />       
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-        <!-- Compiled and minified JavaScript -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
         <title><?= $titre ?></title>
     </head>  
