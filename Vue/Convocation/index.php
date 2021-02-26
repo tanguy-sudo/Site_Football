@@ -3,10 +3,11 @@
 <div class="row">
     <div class="col s12 m3"></div>
     <div class="col s12 m6">
-        <form>
+        <form method="post" action="convocation/index/">
             <div class="input-field">
-                <input type="text" class="datepicker" id="dateConv">  
+                <input type="text" class="datepicker" id="dateConv" name="date">  
                 <label for="dateConv">Date de convocation</label>
+                <button class="btn waves-effect waves-light" type="submit" name="action">Valider</button>
             </div>
         </form>
     </div>

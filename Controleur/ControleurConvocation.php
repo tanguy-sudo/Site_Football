@@ -12,8 +12,8 @@ class ControleurConvocation extends Controleur {
     }
 
     public function index() {
-        //date('Y-m-d')
-        $convocations = $this->convocation->getConvocation("2020-08-23");
+        $date = empty($this->requete->getParametre("date")) ? date("Y-m-d") : implode('-', array_reverse(explode('/', $this->requete->getParametre("date"))));
+        $convocations = $this->convocation->getConvocation($date);
         $effectifs = $this->convocation->geteffectifConv();
         $this->genererVue(array('convocations' => $convocations,
                                 'effectifs'    => $effectifs
@@ -21,4 +21,3 @@ class ControleurConvocation extends Controleur {
     }
 
 }
-

@@ -11,8 +11,7 @@ class Convocation extends Modele {
                 JOIN convocation co ON ca.id_rencontre = co.id_rencontre
                 WHERE ca.date=?';
         $convocation = $this->executerRequete($sql, array($date));
-        if($convocation->rowCount() > 0)
-            return $convocation;
+        return $convocation;
     }
 
     public function geteffectifConv() {
