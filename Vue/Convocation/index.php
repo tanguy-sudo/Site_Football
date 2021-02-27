@@ -12,32 +12,37 @@
         </form>
     </div>
 </div>
-
-<table>
-   <?php foreach($convocations as $convocation): ?>
-        <tr>
-            <td> <?= $this->nettoyer($convocation['competition']) ?> </td>
-            <td> <?= $this->nettoyer($convocation['equipeAdverse']) ?> </td>
-            <td> <?= $this->nettoyer($convocation['site']) ?> </td>
-            <td> <?= $this->nettoyer($convocation['terrain']) ?> </td>
-            <td> <?= $this->nettoyer($convocation['heure']) ?> </td>
-            <td> <?= $this->nettoyer($convocation['messageRdv']) ?> </td>
-            <td> <?= $this->nettoyer($convocation['equipe']) ?> </td>
-            <td> <?= $this->nettoyer($convocation['id_convocation']) ?> </td>
-
-            <?php foreach($effectifs as $effectif): ?>
-                <?php 
-                $a = $this->nettoyer($convocation['id_convocation']);
-                $b = $this->nettoyer($effectif['id_convocation']);
-                    if($a == $b ): 
-                ?>
-                    <td> <?= $this->nettoyer($effectif['prenom']) ?> </td>
-                <?php endif; ?>
-            <?php endforeach; ?>
-        </tr>
-    <?php endforeach; ?>
-</table>
-
+<div class="row">
+        <?php foreach($convocations as $convocation): ?>
+            <div class="col s4">
+                <div class="card-panel grey lighten-5">
+                    <table>
+                        <tr><td>Compétition : </td><td> <?= $this->nettoyer($convocation['competition']) ?> </td></tr>
+                        <tr><td>Equipe adverse :</td><td> <?= $this->nettoyer($convocation['equipeAdverse']) ?> </td></tr>
+                        <tr><td>Site :</td><td> <?= $this->nettoyer($convocation['site']) ?> </td></tr>
+                        <tr><td>Terrain : </td><td> <?= $this->nettoyer($convocation['terrain']) ?> </td></tr>
+                        <tr><td>Heure : </td><td> <?= $this->nettoyer($convocation['heure']) ?> </td></tr>
+                        <tr><td>Message : </td><td> <?= $this->nettoyer($convocation['messageRdv']) ?> </td></tr>
+                        <tr><td>Equipe : </td><td> <?= $this->nettoyer($convocation['equipe']) ?> </td></tr>
+                    
+                        <tr><td colspan="2">Liste des joueurs :</td></tr>
+                         <?php foreach($effectifs as $effectif): ?>
+                                <?php 
+                                $a = $this->nettoyer($convocation['id_convocation']);
+                                $b = $this->nettoyer($effectif['id_convocation']);
+                                    if($a == $b ): 
+                                ?>
+                                   <tr>
+                                        <td> <?= $this->nettoyer($effectif['nom']) ?> </td>
+                                        <td> <?= $this->nettoyer($effectif['prenom']) ?> </td>
+                                   </tr>
+                                    <?php endif; ?>
+                        <?php endforeach; ?> 
+                    </table>
+                </div>
+            </div>
+        <?php endforeach; ?>
+</div>
 <script >
     const Calender = document.querySelector('.datepicker');
     M.Datepicker.init(Calender,{
