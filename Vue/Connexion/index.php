@@ -3,7 +3,7 @@
 
   
         
-                 <div class="row">
+<div class="row">
    <form method="post" action="<?php echo $_SERVER['PHP_SELF'];?>" name="form_connexion">
         
         <div class="row">
@@ -24,7 +24,7 @@
      	<input type="submit" name="connexion" value="Connexion"  />
     </form>
 <?php
-	require_once("Framework/Modele.php");
+/*	require_once("Framework/Modele.php");
 	$pdo= getBdd();
 	if(!! empty($_POST['email']) && ! empty($_POST['password'])){
 	try{$email=$pdo->quote($_POST['email']);
@@ -49,7 +49,7 @@
         displayException($e);
         exit();
     }		
-		}
+		} */
 	?>       
     
   </div>
