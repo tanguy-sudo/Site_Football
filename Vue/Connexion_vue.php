@@ -1,31 +1,10 @@
-<!doctype html>
-<html lang="fr">
-    <head>
-        <meta charset="UTF-8" />
-        <base href="<?= $racineWeb ?>" >
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="Contenu/style.css" />       
-        <!-- Compiled and minified CSS -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-        <!-- Compiled and minified JavaScript -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-        <title><?= $titre ?></title>
-    </head>  
-    <nav>
-        <div class="nav-wrapper teal lighten-2">
-        <a href="#" class="brand-logo">Logo</a>
-        <ul id="nav-mobile" class="right hide-on-med-and-down">
-         
-            
-            <li><a href="collapsible.html">Connexion</a></li>
-        </ul>
-        </div>
-    </nav>
-    <body>
-        <div id="global">
-            <div id="contenu">
+
+<?php $this->titre = "Connexion"; ?>
+
+  
+        
                  <div class="row">
-   <form action="<?php echo $_SERVER['PHP_SELF'];?>" name="form_connexion">
+   <form method="post" action="<?php echo $_SERVER['PHP_SELF'];?>" name="form_connexion">
         
         <div class="row">
         <div class="input-field col s12">
@@ -74,9 +53,4 @@
 	?>       
     
   </div>
-                </div> <!-- #contenu -->
-            <footer id="piedBlog">
-            </footer>
-        </div> <!-- #global -->
-    </body>
-</html>
+        
