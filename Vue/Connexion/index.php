@@ -1,28 +1,22 @@
-
 <?php $this->titre = "Connexion"; ?>
-
-  
-        
-<div class="row">
-   <form method="post" action="<?php echo $_SERVER['PHP_SELF'];?>" name="form_connexion">
-        
-        <div class="row">
-        <div class="input-field col s12">
-          <input id="email" type="email" >
-          <label for="email">Email</label>
-        </div>
-      </div>
-      
     
-      <div class="row">
-        <div class="input-field col s12">
-          <input id="password" type="password" class="validate">
-          <label for="password">Password</label>
+<div class="row">
+    <form method="post" action="connexion/connex/" name="form_connexion">     
+        <div class="row">
+        	<div class="input-field col s12">
+          		<input id="email" type="email" name="Email" >
+          		<label for="email">Email</label>
+        	</div>
         </div>
-      </div>
-     
-     	<input type="submit" name="connexion" value="Connexion"  />
+      	<div class="row">
+        	<div class="input-field col s12">
+          		<input id="password" type="password" class="validate" name="motDePasse">
+          		<label for="password">Password</label>
+        	</div>
+        </div>
+     	<button type="submit" name="connexion" class="btn waves-effect waves-light">Connexion</button>
     </form>
+</div>
 <?php
 /*	require_once("Framework/Modele.php");
 	$pdo= getBdd();
@@ -51,6 +45,3 @@
     }		
 		} */
 	?>       
-    
-  </div>
-        
