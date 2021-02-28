@@ -19,8 +19,16 @@ class ControleurConnexion extends Controleur {
         $Email = $this->requete->getParametre("Email");
         $password = $this->requete->getParametre("motDePasse");
         $user = $this->utilisateur->getUtilisateur($Email, $password);
+        var_dump($user);
+        //teste l'existance d'e l'utilisateur
         if($user){
-            // si l'utilisateur existe retour a la page accueil/index.php
+            
+            if ($user['type'] == "entraineur"){
+                echo "test";
+                $_SESSION['validiteConnexion'] = true;
+            
+                //header("location:index.php?section=accueiletu");
+              }
             header("location:../../index");
         }else {
             //si non retourne a la page connexion/index.php
