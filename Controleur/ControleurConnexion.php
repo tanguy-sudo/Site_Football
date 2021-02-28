@@ -19,22 +19,25 @@ class ControleurConnexion extends Controleur {
         $Email = $this->requete->getParametre("Email");
         $password = $this->requete->getParametre("motDePasse");
         $user = $this->utilisateur->getUtilisateur($Email, $password);
-        var_dump($user);
-        //teste l'existance d'e l'utilisateur
+        //teste l'existance de l'utilisateur
         if($user){
-            
-            if ($user['type'] == "entraineur"){
-                echo "test";
-                $_SESSION['validiteConnexion'] = true;
-            
-                //header("location:index.php?section=accueiletu");
-              }
-            header("location:../../index");
+            $_SESSION['idUtilisateur'] = $user['id_utilisateur'];
+            $_SESSION['nom'] = $user['nom'];
+            $_SESSION['prenom'] = $user['prenom'];
+            $_SESSION['type'] = $user['type'];
+            $_SESSION['valideConnexion'] = true;
+            header("location:../../accueil/index");
         }else {
-            //si non retourne a la page connexion/index.php
+            //sinon retourne a la page connexion/index.php
             $this->executerAction("index");
         }
     }
+
+    public function deconnect(){
+        session_destroy();
+        header("location:../../accueil/index");
+    }
+    
 
 }
 

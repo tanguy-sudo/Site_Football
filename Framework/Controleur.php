@@ -68,4 +68,12 @@ abstract class Controleur {
         $vue->generer($donneesVue);
     }
 
+    protected function isConnect(){
+        if(isset($_SESSION['valideConnexion']) && $_SESSION['valideConnexion'] == true){
+            return true;
+        }else {
+            return header('Location:');
+        }
+    }
+
 }

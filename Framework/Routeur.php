@@ -8,6 +8,10 @@ class Routeur {
 
     public function routerRequete() {
         try {
+            if(session_status() === PHP_SESSION_NONE){
+                session_start();
+            }
+
             $requete = new Requete(array_merge($_GET, $_POST));
 
             $controleur = $this->creerControleur($requete);
