@@ -26,6 +26,7 @@ class ControleurConnexion extends Controleur {
             $_SESSION['prenom'] = $user['prenom'];
             $_SESSION['type'] = $user['type'];
             $_SESSION['valideConnexion'] = true;
+            $_SESSION['connReu']='connReu'; // va me permettre de créer un "toast" pour afficher dans la vu index d'accueil "Connexion réussi"
             header("location:../../accueil/index");
         }else {
             //sinon retourne a la page connexion/index.php

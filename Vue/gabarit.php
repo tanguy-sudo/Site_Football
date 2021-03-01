@@ -44,7 +44,7 @@
     </nav>
     <!-- Dropdown Structure absence-->
     <ul id="dropdownAbsence" class="dropdown-content">
-      <li><a href="#!">Ajouter une absence</a></li>
+      <li><a href="absence/ajoutAbsence/">Ajouter une absence</a></li>
       <li class="divider"></li>
       <li><a href="absence/index/">Voir les absences</a></li>
     </ul>

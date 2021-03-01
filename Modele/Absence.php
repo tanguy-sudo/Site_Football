@@ -12,4 +12,9 @@ class Absence extends Modele {
         return $absences;
     }
 
+    public function addAbsence($id, $date, $code){
+        $sql = 'insert into absence(codeAbsence, date, id_Effectif) values(?, ?, ?)';
+        $this->executerRequete($sql, array($code, $date, $id));
+    }
+
 }
