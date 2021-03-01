@@ -68,11 +68,12 @@ abstract class Controleur {
         $vue->generer($donneesVue);
     }
 
+    // Permets de vérifier que seul les personnes connectées peuvent accéder à la page
     protected function isConnect(){
         if(isset($_SESSION['valideConnexion']) && $_SESSION['valideConnexion'] == true){
             return true;
         }else {
-            return header('Location:');
+            return  header("location:../");
         }
     }
 

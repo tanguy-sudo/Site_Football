@@ -34,8 +34,10 @@ class ControleurConnexion extends Controleur {
     }
 
     public function deconnect(){
-        session_destroy();
-        header("location:../../accueil/index");
+        if($this->isConnect()){
+            session_destroy();
+            header("location:../../accueil/index");
+        }
     }
     
 

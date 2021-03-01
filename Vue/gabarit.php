@@ -22,7 +22,7 @@
             <?php if($_SESSION['type'] == "entraineur") :?>
               <li><a class="dropdown-trigger" href="#!" data-target="dropdownConvocation">Convocation<i class="material-icons right">arrow_drop_down</i></a></li>                   
               <li><a href="rencontre/index/">Rencontre</a></li>
-              <li><a href="#!">Effectif</a></li>
+              <li><a href="effectif/index/">Effectif</a></li>
               <li><a class="dropdown-trigger" href="#!" data-target="dropdownAbsence">Absence<i class="material-icons right">arrow_drop_down</i></a></li>                   
             <!-- on teste si l'utilisateur est le secretaire -->
             <?php elseif($_SESSION['type'] == "secretaire") : ?>
@@ -36,7 +36,7 @@
           <?php else: ?>
             <li><a href="convocation/index/">Convocation</a></li>
             <li><a href="rencontre/index/">Rencontre</a></li>
-            <li><a href="rencontre/index/">Absence</a></li>
+            <li><a href="absence/index/">Absence</a></li>
             <li><a href="connexion/index/">Connexion</a></li>
           <?php endif; ?>
         </ul>
@@ -46,7 +46,7 @@
     <ul id="dropdownAbsence" class="dropdown-content">
       <li><a href="#!">Ajouter une absence</a></li>
       <li class="divider"></li>
-      <li><a href="#!">Voir les absences</a></li>
+      <li><a href="absence/index/">Voir les absences</a></li>
     </ul>
     <!-- Dropdown Structure convocation-->
     <ul id="dropdownConvocation" class="dropdown-content">
@@ -62,9 +62,9 @@
     </ul>
     <!-- Dropdown Structure effectif-->
     <ul id="dropdownEffectif" class="dropdown-content">
-      <li><a href="#!">Ajouter un effectif</a></li>
+      <li><a href="effectif/ajoutEffectif/">Ajouter un effectif</a></li>
       <li class="divider"></li>
-      <li><a href="#!">Voir les effectifs</a></li>
+      <li><a href="effectif/index/">Voir les effectifs</a></li>
     </ul>
     <body>
         <div id="global">

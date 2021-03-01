@@ -3,7 +3,8 @@
 require_once 'Framework/Modele.php';
 
 class Utilisateur extends Modele {
-
+    
+    // renvoi l'utilisateur, s'il existe
     public function getUtilisateur($Email, $password) {
         $sql = 'SELECT *  
                 FROM utilisateur u

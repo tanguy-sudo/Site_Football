@@ -20,7 +20,8 @@
                 <td> <?= $this->nettoyer($rencontre['competition']) ?> </td>
                 <td> <?= $this->nettoyer($rencontre['equipe']) ?> </td>
                 <td> <?= $this->nettoyer($rencontre['equipeAdverse']) ?> </td>
-                <td> <?= $this->nettoyer($rencontre['date']) ?> </td>
+                <!-- la date est au format EN je l'affiche au format FR -->
+                <td> <?= implode('/', array_reverse(explode('-', $this->nettoyer($rencontre['date']) ))); ?> </td>
                 <td> <?= $this->nettoyer($rencontre['heure']) ?> </td>
                 <td> <?= $this->nettoyer($rencontre['terrain']) ?> </td>
                 <td> <?= $this->nettoyer($rencontre['site']) ?> </td>

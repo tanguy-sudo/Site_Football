@@ -13,10 +13,12 @@ class ControleurConvocation extends Controleur {
 
     public function index() {
         $date = empty($this->requete->getParametre("date")) ? date("Y-m-d") : implode('-', array_reverse(explode('/', $this->requete->getParametre("date"))));
+        $dateChoisi = implode('/', array_reverse(explode('-', $date)));
         $convocations = $this->convocation->getConvocation($date);
         $effectifs = $this->convocation->geteffectifConv();
         $this->genererVue(array('convocations' => $convocations,
-                                'effectifs'    => $effectifs
+                                'effectifs'    => $effectifs,
+                                'dateChoisi'         => $dateChoisi
                             ));
     }
 

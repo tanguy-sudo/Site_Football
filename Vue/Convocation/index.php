@@ -5,9 +5,12 @@
     <div class="col s12 m6">
         <form method="post" action="convocation/index/">
             <div class="input-field">
-                <input type="text" class="datepicker" id="dateConv" name="date">  
+                <input type="text" class="datepicker" id="dateConv" name="date" value="<?= $dateChoisi ?>">  
                 <label for="dateConv">Date de convocation</label>
-                <button class="btn waves-effect waves-light" type="submit" name="action">Valider</button>
+                <button class="btn waves-effect waves-light" type="submit" name="action">
+                    Valider
+                    <i class="material-icons right">send</i>
+                </button>
             </div>
         </form>
     </div>
@@ -43,21 +46,6 @@
             </div>
         <?php endforeach; ?>
 </div>
-<script >
-    const Calender = document.querySelector('.datepicker');
-    M.Datepicker.init(Calender,{
-        format:'dd/mm/yyyy',
-        i18n:{
-            cancel:'ANNULER',
-            done:'D\'ACCORD',
-            months: [ 'Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre' ],
-		    monthsShort: [ 'Jan', 'Fev', 'Mar', 'Avr', 'Mai', 'Jun', 'Jul', 'Aou', 'Sep', 'Oct', 'Nov', 'Dec' ],
-		    weekdays: [ 'Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi' ],
-		    weekdaysShort: [ 'Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam' ],
-		    weekdaysAbbrev: [ 'D', 'L', 'M', 'M', 'J', 'V', 'S' ]
-        }
-    });
-</script>
 <style>
     .datepicker-date-display{
     background-color: #ee6e73;
