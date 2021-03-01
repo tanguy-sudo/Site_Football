@@ -13,6 +13,10 @@ class ControleurConnexion extends Controleur {
 
     public function index() {
         $this->genererVue();
+        if(isset($_SESSION['connErr'])){
+            echo "<script>M.toast({html:'Adresse email ou mot de passe erroné'})</script>";
+            unset($_SESSION['connErr']);
+        }
     }
 
     public function connex() {
@@ -30,6 +34,7 @@ class ControleurConnexion extends Controleur {
             header("location:../../accueil/index");
         }else {
             //sinon retourne a la page connexion/index.php
+            $_SESSION['connErr']='connErr';
             $this->executerAction("index");
         }
     }

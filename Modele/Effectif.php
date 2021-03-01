@@ -11,10 +11,19 @@ class Effectif extends Modele {
         return $effectifs;
     }
 
-    // Ajout d'un nouvelle effectif
+// Ajout d'un nouvelle effectif
     public function addEffectifs($nom, $prenom, $typelicence) {
         $sql = 'insert into effectif(typeLicence, prenom, nom) values(?, ?, ?)';
         $this->executerRequete($sql, array($typelicence, $prenom, $nom));
+    }
+
+    // retourne un effectif
+    public function getEffectif($type, $prenom, $nom) {
+        $sql = 'SELECT * 
+                FROM effectif
+                WHERE typeLicence = ? AND prenom = ? AND nom = ?';
+        $absence = $this->executerRequete($sql, array($type, $prenom, $nom));
+        return $absence->fetch();
     }
 
 }
