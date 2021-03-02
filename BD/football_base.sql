@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : mar. 02 mars 2021 à 16:30
+-- Généré le : mar. 02 mars 2021 à 22:18
 -- Version du serveur :  8.0.21
 -- Version de PHP : 7.4.9
 
@@ -67,7 +67,7 @@ CREATE TABLE IF NOT EXISTS `calendrierrencontre` (
   `terrain` varchar(255) NOT NULL,
   `site` varchar(255) NOT NULL,
   PRIMARY KEY (`id_rencontre`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `calendrierrencontre`
@@ -77,7 +77,8 @@ INSERT INTO `calendrierrencontre` (`id_rencontre`, `categorie`, `competition`, `
 (1, 'seniors', 'Amical', 'SeniorsA', 'Ambillou ASVR 1', '2020-08-16', '14:45:00', 'Stade Alphonse leroi 1', 'Ambillou'),
 (2, 'seniors', 'Coupe de l\'Anjou', 'SeniorsB', 'Valanjou AS 2', '2020-08-23', '15:00:00', 'Stade de contades', 'Allonnes'),
 (3, 'seniors', 'Coupe des Pays de la loire', 'SeniorsA', 'Angers NDC 2', '2020-08-23', '15:00:00', 'Stade andré bertin 1', 'Bellevigne en Layon'),
-(4, 'seniors', 'D4 Groupe E', 'SeniorsC', 'St Hilaire Vihiers 4', '2020-08-23', '15:00:00', 'Terrain A', 'Martigne');
+(4, 'seniors', 'D4 Groupe E', 'SeniorsC', 'St Hilaire Vihiers 4', '2020-08-23', '15:00:00', 'Terrain A', 'Martigne'),
+(5, 'seniors', 'D1 Groupe A', 'SeniorsB', 'Angers NDC 2', '2021-03-28', '14:00:00', 'Stade andré bertin 1', 'Cersay');
 
 -- --------------------------------------------------------
 

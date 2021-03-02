@@ -1,7 +1,7 @@
 <?php $this->titre = "Effectif"; ?>
 
 
-<div class="row">
+<div class="row center">
     <form class="col col s12" method="post" action="effectif/valideEffectif/">
       <div class="row">
         <div class="input-field col s6 offset-s3">

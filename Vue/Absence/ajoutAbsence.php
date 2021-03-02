@@ -1,6 +1,6 @@
 <?php $this->titre = "Absence"; ?>
 
-<div class="row">
+<div class="row center">
     <form class="col col s12" method="post" action="absence/valideAbsence">
         <div class="row">
             <div class="input-field col s6 offset-s3">

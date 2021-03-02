@@ -1,6 +1,7 @@
 const Calender = document.querySelector('.datepicker');
 M.Datepicker.init(Calender,{
     format:'dd/mm/yyyy',
+    autoClose : true,
     i18n:{
         cancel:'ANNULER',
         done:'D\'ACCORD',
@@ -20,4 +21,13 @@ document.addEventListener('DOMContentLoaded', function() {
 $(document).ready(function(){
     $('.dropdown-trigger').dropdown();
     $('select').formSelect();
+    $('.timepicker').timepicker({
+            defaultTime: 'now',
+            twelveHour : false,
+            autoClose : true,
+            i18n:{
+                cancel:'ANNULER',
+                done:'D\'ACCORD'
+            }
+        });
 });

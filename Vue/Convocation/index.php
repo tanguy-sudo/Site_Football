@@ -1,6 +1,6 @@
 <?php $this->titre = "Convocation"; ?>
 
-<div class="row">
+<div class="row center">
     <div class="col s12 m3"></div>
     <div class="col s12 m6">
         <form method="post" action="convocation/index/">
