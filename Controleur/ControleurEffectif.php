@@ -23,30 +23,61 @@ class ControleurEffectif extends Controleur {
                 echo "<script>M.toast({html:'Cette personne existe déjà'})</script>";
                 unset($_SESSION['errAjoutEf']);
             }
+            if(isset($_SESSION['supEf'])){
+                echo "<script>M.toast({html:'Suppression réussite'})</script>";
+                unset($_SESSION['supEf']);
+            }
+            if(isset($_SESSION['upEf'])){
+                echo "<script>M.toast({html:' Cette personne est licencié'})</script>";
+                unset($_SESSION['upEf']);
+            }
         }
     }
 
     public function ajoutEffectif(){
-        if($this->isConnect()){
+        if($this->SecretaireisConnected()){
             $this->genererVue();   
         }
     }
+
     public function valideEffectif(){
-        if($this->isConnect()){
+        if($this->SecretaireisConnected()){
             $nom = $this->requete->getParametre("nom");
             $prenom = $this->requete->getParametre("prenom");
             $typelicence = $this->requete->getParametre("typelicence");
-            $unEffectif = $this->effectif->getEffectif($typelicence, $prenom, $nom);
+            $Licencie = $this->requete->getParametre("Licencie");
+            $unEffectif = $this->effectif->getEffectif($typelicence, $prenom, $nom, $Licencie);
 
             if(!$unEffectif){
-                if(isset($nom) && isset($prenom) && isset($prenom)){
+                if(isset($nom) && isset($prenom) && isset($prenom) && isset($Licencie)){
                     $_SESSION['ajoutEf']='ajoutEf';
-                    $this->effectif->addEffectifs($nom, $prenom, $typelicence);
+                    $this->effectif->addEffectifs($nom, $prenom, $typelicence, $Licencie);
                     $this->executerAction('index');
                 }
             }
             else{
                 $_SESSION['errAjoutEf']='errAjoutEf';
+                $this->executerAction('index');
+            }
+        }
+    }
+
+    public function supprimer(){
+        if($this->SecretaireisConnected()){
+            $id = $this->requete->getParametre("id");
+            if(isset($id)){
+                $_SESSION['supEf']='supEf';
+                $this->effectif->delEffectif($id);
+                $this->executerAction('index');
+            }
+        }
+    }
+    public function modifieLicence(){
+        if($this->SecretaireisConnected()){
+            $idE = $this->requete->getParametre("idE");
+            if(isset($idE)){
+                $_SESSION['upEf']='upEf';
+                $this->effectif->UpdEffectif($idE);
                 $this->executerAction('index');
             }
         }

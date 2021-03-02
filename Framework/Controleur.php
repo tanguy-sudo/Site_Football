@@ -77,4 +77,13 @@ abstract class Controleur {
         }
     }
 
+        // Permets de vérifier que seul les personnes connectées peuvent accéder à la page
+        protected function SecretaireisConnected(){
+            if(isset($_SESSION['valideConnexion']) && $_SESSION['valideConnexion'] == true &&  $_SESSION['type'] == 'secretaire'){
+                return true;
+            }else {
+                return  header("location:../../");
+            }
+        }
+
 }

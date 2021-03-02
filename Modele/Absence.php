@@ -31,7 +31,7 @@ class Absence extends Modele {
     public function delAbsence($id) {
         $sql = 'DELETE 
                 FROM absence
-                WHERE id_Effectif = ?';
+                WHERE id_absence = ?';
         $this->executerRequete($sql, array($id));
     }
 

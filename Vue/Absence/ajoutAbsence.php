@@ -22,7 +22,6 @@
             <div class="input-field col s6 offset-s3">
                     <select name="code" required>
                             <option value="Blessé">Blessé</option>
-                            <option value="Non-licencié">Non-licencié</option>
                             <option value="Suspendu">Suspendu</option>
                             <option value="Absent">Absent</option>         
                     </select>

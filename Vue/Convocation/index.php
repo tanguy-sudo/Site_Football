@@ -15,7 +15,10 @@
         </form>
     </div>
 </div>
-<div class="row">
+<div class="row center">
+    <?php if($convocations->rowCount() == 0) : ?>
+        <h5 class="header col s12 light">Aucune convocation pour cette date</h5>
+    <?php endif; ?>
         <?php foreach($convocations as $convocation): ?>
             <div class="col s4">
                 <div class="card-panel grey lighten-5">
@@ -46,11 +49,3 @@
             </div>
         <?php endforeach; ?>
 </div>
-<style>
-    .datepicker-date-display{
-    background-color: #ee6e73;
-}
-button.btn-flat {
-    color: #ee6e73;
-}
-</style>
