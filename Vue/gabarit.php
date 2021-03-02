@@ -76,6 +76,13 @@
             </footer>
         </div> <!-- #global -->
     </body>
+    <footer class="page-footer">
+          <div class="footer-copyright">
+            <div class="container">
+              Copyright © <?= date('Y'); ?>  Site football
+            </div>
+          </div>
+    </footer>
 </html>
 <script type="text/javascript" src="Contenu/materialize/js/materialize.min.js"></script>
 <script type="text/javascript" src="Contenu/script.js"></script>

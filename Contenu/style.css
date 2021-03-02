@@ -1,0 +1,11 @@
+.datepicker-date-display{
+    background-color: #ee6e73 !important;
+}
+button.btn-flat {
+    color: #ee6e73 !important;
+}
+#global {
+    display: flex;
+    flex-wrap: wrap;
+    min-height: 100vh;
+}
