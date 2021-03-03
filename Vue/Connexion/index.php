@@ -1,47 +1,17 @@
 <?php $this->titre = "Connexion"; ?>
     
 <div class="row">
-    <form method="post" action="connexion/connex/" name="form_connexion">     
-        <div class="row">
-        	<div class="input-field col s12">
-          		<input id="email" type="email" name="Email" >
-          		<label for="email">Email</label>
-        	</div>
-        </div>
-      	<div class="row">
-        	<div class="input-field col s12">
-          		<input id="password" type="password" class="validate" name="motDePasse">
-          		<label for="password">Password</label>
-        	</div>
-        </div>
-     	<button type="submit" name="connexion" class="btn waves-effect waves-light">Connexion</button>
-    </form>
+	<form class="row g-3 needs-validation" method="post" action="connexion/connex/" name="form_connexion">
+		<div class="form-floating mb-3">
+			<input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="Email" required>
+			<label for="floatingInput">Email</label>
+		</div>
+		<div class="form-floating mb-3">
+			<input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="motDePasse" required>
+			<label for="floatingPassword">Mot de passe</label>
+		</div>
+		<div class="mb-3">
+			<button type="submit" name="connexion" class="btn btn-primary">Connexion</button>
+		</div>
+	</form>
 </div>
-<?php
-/*	require_once("Framework/Modele.php");
-	$pdo= getBdd();
-	if(!! empty($_POST['email']) && ! empty($_POST['password'])){
-	try{$email=$pdo->quote($_POST['email']);
-		$password=$pdo->quote($_POST['password']);
-		
-		
-		$query="select MotDePasse From utilisateur where Adresseemail=$email";
-		if($password==$pdo->executerRequete($query)){
-			$query="select type from utlisateur where Adressemail=$email";
-			if($pdo->executerRequete($query)=="secretaire") 
-			{
-	//connexion en tant que secretaire
-			}	else {
-		//connexion en tant que entraineur		
-						} 
-		}
-		else {
-		//connexion en tant que visiteur 			
-		}
-	}
-	catch (PDOException $e) {
-        displayException($e);
-        exit();
-    }		
-		} */
-	?>       

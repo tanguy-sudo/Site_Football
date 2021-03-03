@@ -1,37 +1,29 @@
 <?php $this->titre = "Absence"; ?>
 
-<div class="row center">
-    <form class="col col s12" method="post" action="absence/valideAbsence">
-        <div class="row">
-            <div class="input-field col s6 offset-s3">
-                    <select name="idEffectif" required>
+<div class="row">
+    <form class="row g-3" method="post" action="absence/valideAbsence">
+        <div class="form-floating mb-3">
+                    <select class="form-select" name="idEffectif" id="floatingSelect" required>
                         <?php foreach($effectifs as $effectif): ?>
                             <option value="<?= $this->nettoyer($effectif['id_effectif']) ?>"> <?= $this->nettoyer($effectif['prenom']).' '. $this->nettoyer($effectif['nom']); ?> </option>         
                         <?php endforeach; ?>
                     </select>
-                    <label>Effectifs</label>
-            </div>
+                    <label for="floatingSelect">Effectifs</label>
         </div>
-        <div class="row">
-            <div class="input-field col s6 offset-s3">
-                <input type="text" class="datepicker" id="dateConv" name="date" required>  
+        <div class="form-floating mb-3">
+                <input type="date" class="form-control" id="dateConv" name="date" value="<?= date('Y-m-d');?>" required>  
                 <label for="dateConv">Date de convocation</label>
-            </div>
         </div>
-        <div class="row">
-            <div class="input-field col s6 offset-s3">
-                    <select name="code" required>
+        <div class="form-floating mb-3">
+                    <select class="form-select" id="floatingSelect2" name="code" required>
                             <option value="Blessé">Blessé</option>
                             <option value="Suspendu">Suspendu</option>
                             <option value="Absent">Absent</option>         
                     </select>
-                    <label>Code absence</label>
-            </div>
+                    <label for="floatingSelect2">Code absence</label>
         </div>
-        <div class="row">
-            <div class="input-field col s6 offset-s3">
-                <input class="btn waves-effect waves-light" type="submit" value="valider">
-            </div>
+        <div class="mb-3">
+            <button type="submit" name="ajoutAbs" class="btn btn-primary">valider</button>
         </div>
     </form>
 </div> 

@@ -5,81 +5,90 @@
         <base href="<?= $racineWeb ?>" >
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <link type="text/css" rel="stylesheet" href="Contenu/style.css" />
-        <link type="text/css" rel="stylesheet" href="Contenu/materialize/css/materialize.min.css"  media="screen,projection"/>
+        <link type="text/css" rel="stylesheet" href="Contenu/bootstrap/css/bootstrap.min.css" />
       
        <title><?= $titre ?></title>
     </head>  
-    <nav>
-      <div class="nav-wrapper">
-        <a href="" class="brand-logo">Logo</a>
-        <ul id="nav-mobile" class="right hide-on-med-and-down">     
-        <!-- on regarde si l'utilisateur est connecté -->   
-          <?php if(isset($_SESSION['valideConnexion']) && $_SESSION['valideConnexion'] == true) :?>
-            <!-- on teste si l'utilisateur est un entraineur -->
-            <?php if($_SESSION['type'] == "entraineur") :?>
-              <li><a class="dropdown-trigger" href="#!" data-target="dropdownConvocation">Convocation<i class="material-icons right">arrow_drop_down</i></a></li>                   
-              <li><a href="rencontre/index/">Rencontre</a></li>
-              <li><a href="effectif/index/">Effectif</a></li>
-              <li><a class="dropdown-trigger" href="#!" data-target="dropdownAbsence">Absence<i class="material-icons right">arrow_drop_down</i></a></li>                   
-            <!-- on teste si l'utilisateur est le secretaire -->
-            <?php elseif($_SESSION['type'] == "secretaire") : ?>
-              <li><a href="convocation/index/">Convocation</a></li>
-              <li><a class="dropdown-trigger" href="#!" data-target="dropdownRencontre">Rencontre<i class="material-icons right">arrow_drop_down</i></a></li>                   
-              <li><a class="dropdown-trigger" href="#!" data-target="dropdownEffectif">Effectif<i class="material-icons right">arrow_drop_down</i></a></li>                   
-              <li><a class="dropdown-trigger" href="#!" data-target="dropdownAbsence">Absence<i class="material-icons right">arrow_drop_down</i></a></li>                   
-            <?php endif; ?>
-            <li><a href="connexion/deconnect/">Deconnexion</a></li> 
-          <!-- menu si l'utilisateur n'est pas connecté -->
-          <?php else: ?>
-            <li><a href="convocation/index/">Convocation</a></li>
-            <li><a href="rencontre/index/">Rencontre</a></li>
-            <li><a href="absence/index/">Absence</a></li>
-            <li><a href="connexion/index/">Connexion</a></li>
-          <?php endif; ?>
-        </ul>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="">Navbar</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav">
+              <!-- on regarde si l'utilisateur est connecté -->   
+              <?php if(isset($_SESSION['valideConnexion']) && $_SESSION['valideConnexion'] == true) :?>
+                <!-- on teste si l'utilisateur est un entraineur -->
+                <?php if($_SESSION['type'] == "entraineur") :?>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="dropdownConvocation" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Convocation
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownConvocation">
+                      <li><a class="dropdown-item" href="#">Ajouter une convocations</a></li>
+                      <li><a class="dropdown-item" href="convocation/index/">Voir les convocations</a></li>
+                    </ul>
+                  </li>                   
+                  <li class="nav-item"><a class="nav-link" href="rencontre/index/">Rencontre</a></li>
+                  <li class="nav-item"><a class="nav-link" href="effectif/index/">Effectif</a></li>                  
+                <!-- on teste si l'utilisateur est le secretaire -->
+                <?php elseif($_SESSION['type'] == "secretaire") : ?>
+                  <li class="nav-item"><a class="nav-link" href="convocation/index/">Convocation</a></li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="dropdownRencontre" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Rencontre
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownRencontre">
+                      <li><a class="dropdown-item" href="rencontre/ajoutRencontre/">Ajouter une rencontre</a></li>
+                      <li><a class="dropdown-item" href="rencontre/index/">Voir les rencontres</a></li>
+                    </ul>
+                  </li>  
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="dropdownEffectif" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Effectif
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownEffectif">
+                      <li><a class="dropdown-item" href="effectif/ajoutEffectif/">Ajouter un effectif</a></li>
+                      <li><a class="dropdown-item" href="effectif/index/">Voir les effectifs</a></li>
+                    </ul>
+                  </li>  
+                <?php endif; ?>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="dropdownAbsence" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Absence
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownAbsence">
+                      <li><a class="dropdown-item" href="absence/ajoutAbsence/">Ajouter une absence</a></li>
+                      <li><a class="dropdown-item" href="absence/index/">Voir les absences</a></li>
+                    </ul>
+                </li>  
+                <li class="nav-item"><a class="nav-link" href="connexion/deconnect/">Deconnexion</a></li>
+              <!-- menu si l'utilisateur n'est pas connecté -->
+              <?php else: ?>
+                <li class="nav-item"><a class="nav-link" href="convocation/index/">Convocation</a></li>
+                <li class="nav-item"><a class="nav-link" href="rencontre/index/">Rencontre</a></li>
+                <li class="nav-item"><a class="nav-link" href="absence/index/">Absence</a></li>
+                <li class="nav-item"><a class="nav-link" href="connexion/index/">Connexion</a></li>
+              <?php endif; ?>
+          </ul>
+        </div>
       </div>
     </nav>
-    <!-- Dropdown Structure absence-->
-    <ul id="dropdownAbsence" class="dropdown-content">
-      <li><a href="absence/ajoutAbsence/">Ajouter une absence</a></li>
-      <li class="divider"></li>
-      <li><a href="absence/index/">Voir les absences</a></li>
-    </ul>
-    <!-- Dropdown Structure convocation-->
-    <ul id="dropdownConvocation" class="dropdown-content">
-      <li><a href="#!">Ajouter une convocations</a></li>
-      <li class="divider"></li>
-      <li><a href="convocation/index/">Voir les convocations</a></li>
-    </ul>
-    <!-- Dropdown Structure rencontre-->
-    <ul id="dropdownRencontre" class="dropdown-content">
-      <li><a href="rencontre/ajoutRencontre/">Ajouter une rencontre</a></li>
-      <li class="divider"></li>
-      <li><a href="rencontre/index/">Voir les rencontres</a></li>
-    </ul>
-    <!-- Dropdown Structure effectif-->
-    <ul id="dropdownEffectif" class="dropdown-content">
-      <li><a href="effectif/ajoutEffectif/">Ajouter un effectif</a></li>
-      <li class="divider"></li>
-      <li><a href="effectif/index/">Voir les effectifs</a></li>
-    </ul>
     <body>
       <div id="global">
         <div class="container margin-h">
           <?= $contenu ?>
         </div>
       </div>
-      <footer class="page-footer">
-        <div class="footer-copyright">
-          <div class="container">
-            Copyright © <?= date('Y'); ?>  Site football
-          </div>
+      <footer class="footer mt-auto py-3 bg-dark">
+        <div class="container">
+          <span class="text-muted">Copyright © <?= date('Y'); ?>  Site football</span>
         </div>
       </footer>
     </body>
-<script type="text/javascript" src="Contenu/materialize/js/materialize.min.js"></script>
+<script type="text/javascript" src="Contenu/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script type="text/javascript" src="Contenu/script.js"></script>
 </html>

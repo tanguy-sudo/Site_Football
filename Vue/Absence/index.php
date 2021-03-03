@@ -1,13 +1,17 @@
 <?php $this->titre = "Absence"; ?>
 
-<div class="row center">
-    <table>
+<div class="row">
+    <table class="table">
         <thead>
             <tr>
-                <td>Code de l'absence</td>
-                <td>Date</td>
-                <td>Prenom</td>
-                <td>Nom</td>
+                <th scope="col">Code de l'absence</th>
+                <th scope="col">Date</th>
+                <th scope="col">Prenom</th>
+                <th scope="col">Nom</th>
+                <?php if(isset($_SESSION['valideConnexion']) && $_SESSION['valideConnexion'] == true) : ?>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                <?php endif; ?>
             </tr>
         </thead>
         <tbody>

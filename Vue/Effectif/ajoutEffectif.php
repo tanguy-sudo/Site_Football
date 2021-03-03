@@ -1,39 +1,29 @@
 <?php $this->titre = "Effectif"; ?>
 
 
-<div class="row center">
-    <form class="col col s12" method="post" action="effectif/valideEffectif/">
-      <div class="row">
-        <div class="input-field col s6 offset-s3">
-          <input id="nom" type="text" class="validate" required name="nom">
-          <label for="nom">Nom</label>
-        </div>
+<div class="row">
+    <form class="row g-3" method="post" action="effectif/valideEffectif/">
+      <div class="form-floating mb-3">
+        <input id="nom" class="form-control" type="text" required name="nom">
+        <label for="nom">Nom</label>
       </div>
-      <div class="row">
-        <div class="input-field col s6 offset-s3">
-          <input id="Prenom" type="text" class="validate" required name="prenom">
-          <label for="Prenom">Prenom</label>
-        </div>
+      <div class="form-floating mb-3">
+        <input id="Prenom" class="form-control" type="text" required name="prenom">
+        <label for="Prenom">Prenom</label>
       </div>
-      <div class="row">
-        <div class="input-field col s6 offset-s3">
-          <input id="typeLicence" type="text" class="validate" required name="typelicence">
-          <label for="typeLicence">Type de licence</label>
-        </div>
+      <div class="form-floating mb-3">
+        <input id="typeLicence" class="form-control" type="text" required name="typelicence">
+        <label for="typeLicence">Type de licence</label>
       </div>
-      <div class="row">
-            <div class="input-field col s6 offset-s3">
-                    <select name="Licencie" required>
+      <div class="form-floating mb-3">
+                    <select class="form-select" id="floatingSelect" name="Licencie" required>
                             <option value="oui">Oui</option>
                             <option value="non">Non</option>      
                     </select>
-                    <label>Licencié</label>
-            </div>
-        </div>
-      <div class="row">
-        <div class="input-field col s6 offset-s3">
-          <input class="btn waves-effect waves-light" type="submit" value="valider">
-        </div>
+                    <label for="floatingSelect">Licencié</label>
+      </div>
+      <div class="mb-3">
+      <button type="submit" name="ajoutAbs" class="btn btn-primary">valider</button>
       </div>
     </form>
   </div>

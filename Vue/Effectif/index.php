@@ -1,13 +1,19 @@
 <?php $this->titre = "Effectif"; ?>
 
-<div class="row center">
-    <table>
+<div class="row">
+    <table class="table">
         <thead>
             <tr>
-                <td>type de licence</td>
-                <td>Prenom</td>
-                <td>Nom</td>
-                <td>Licencié</td>
+                <th scope="col">type de licence</td>
+                <th scope="col">Prenom</td>
+                <th scope="col">Nom</td>
+                <th scope="col">Licencié</td>
+                <?php if(isset($_SESSION['valideConnexion']) && $_SESSION['valideConnexion'] == true &&  $_SESSION['type'] == 'secretaire') : ?>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                <?php endif; ?>
             </tr>
         </thead>
         <tbody>
