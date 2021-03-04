@@ -17,16 +17,43 @@ class ControleurAbsence extends Controleur {
     public function index(){
             $absences =$this->absence->getAbsences();
             $this->genererVue(array('absences' => $absences));
+
             if(isset($_SESSION['ajoutAb'])){
-                echo "<script>M.toast({html:'Ajout réussi'})</script>";
+             echo"              
+                <div class='toast align-items-center position-absolute top-50 start-50 translate-middle text-white bg-secondary' id='myToast' role='alert' aria-live='assertive' aria-atomic='true' data-bs-delay='1700'>
+                    <div class='d-flex justify-content-center'>    
+                        <div class='toast-body'>
+                            Ajout réussi
+                        </div>
+                    </div>
+                </div>
+                ";
                 unset($_SESSION['ajoutAb']);
             }
+
             if(isset($_SESSION['errAjoutAb'])){
-                echo "<script>M.toast({html:'Cette personne est déjà absente cette journée'})</script>";
+                echo"              
+                <div class='toast align-items-center position-absolute top-50 start-50 translate-middle text-white bg-secondary' id='myToast' role='alert' aria-live='assertive' aria-atomic='true' data-bs-delay='1700'>
+                    <div class='d-flex justify-content-center'>    
+                        <div class='toast-body'>
+                            Cette personne est déjà absente cette journée
+                        </div>
+                    </div>
+                </div>
+                ";
                 unset($_SESSION['errAjoutAb']);
             }
+            
             if(isset($_SESSION['supAb'])){
-                echo "<script>M.toast({html:'Absence supprimé'})</script>";
+                echo"              
+                <div class='toast align-items-center position-absolute top-50 start-50 translate-middle text-white bg-secondary' id='myToast' role='alert' aria-live='assertive' aria-atomic='true' data-bs-delay='1700'>
+                    <div class='d-flex justify-content-center'>    
+                        <div class='toast-body'>
+                            Absence supprimé
+                        </div>
+                    </div>
+                </div>
+                ";
                 unset($_SESSION['supAb']);
             }
     }

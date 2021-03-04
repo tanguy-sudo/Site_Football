@@ -1,6 +1,6 @@
 <?php $this->titre = "Absence"; ?>
 
-<div class="row">
+<div class="row margin-row">
     <form class="row g-3" method="post" action="absence/valideAbsence">
         <div class="form-floating mb-3">
                     <select class="form-select" name="idEffectif" id="floatingSelect" required>

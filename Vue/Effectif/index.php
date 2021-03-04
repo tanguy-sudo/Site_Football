@@ -1,6 +1,6 @@
 <?php $this->titre = "Effectif"; ?>
 
-<div class="row">
+<div class="row margin-row">
     <table class="table">
         <thead>
             <tr>

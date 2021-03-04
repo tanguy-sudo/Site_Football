@@ -1,7 +1,7 @@
 <?php $this->titre = "Effectif"; ?>
 
 
-<div class="row">
+<div class="row margin-row">
     <form class="row g-3" method="post" action="effectif/valideEffectif/">
       <div class="form-floating mb-3">
         <input id="nom" class="form-control" type="text" required name="nom">

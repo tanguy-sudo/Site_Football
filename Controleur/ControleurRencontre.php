@@ -14,12 +14,30 @@ class ControleurRencontre extends Controleur {
     public function index() {
         $rencontres = $this->rencontre->getRencontres();
         $this->genererVue(array('rencontres' => $rencontres));
+
         if(isset($_SESSION['errAjoutRen'])){
-            echo "<script>M.toast({html:'Cette rencontre existe déjà'})</script>";
+            echo"              
+            <div class='toast align-items-center position-absolute top-50 start-50 translate-middle text-white bg-secondary' id='myToast' role='alert' aria-live='assertive' aria-atomic='true' data-bs-delay='1700'>
+                <div class='d-flex justify-content-center'>    
+                    <div class='toast-body'>
+                        Cette rencontre existe déjà
+                    </div>
+                </div>
+            </div>
+            ";
             unset($_SESSION['errAjoutRen']);
         }
+
         if(isset($_SESSION['AjoutRen'])){
-            echo "<script>M.toast({html:'Ajout réussi'})</script>";
+            echo"              
+            <div class='toast align-items-center position-absolute top-50 start-50 translate-middle text-white bg-secondary' id='myToast' role='alert' aria-live='assertive' aria-atomic='true' data-bs-delay='1700'>
+                <div class='d-flex justify-content-center'>    
+                    <div class='toast-body'>
+                        Ajout réussi
+                    </div>
+                </div>
+            </div>
+            ";
             unset($_SESSION['AjoutRen']);
         }
     }

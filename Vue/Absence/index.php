@@ -1,6 +1,6 @@
 <?php $this->titre = "Absence"; ?>
 
-<div class="row">
+<div class="row margin-row">
     <table class="table">
         <thead>
             <tr>

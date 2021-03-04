@@ -15,20 +15,56 @@ class ControleurEffectif extends Controleur {
         if($this->isConnect()){    
             $effectifs = $this->effectif->getEffectifs();
             $this->genererVue(array('effectifs' => $effectifs));
+
             if(isset($_SESSION['ajoutEf'])){
-                echo "<script>M.toast({html:'Ajout réussi'})</script>";
+                echo"              
+                <div class='toast align-items-center position-absolute top-50 start-50 translate-middle text-white bg-secondary' id='myToast' role='alert' aria-live='assertive' aria-atomic='true' data-bs-delay='1700'>
+                    <div class='d-flex justify-content-center'>    
+                        <div class='toast-body'>
+                            Ajout réussi
+                        </div>
+                    </div>
+                </div>
+                ";
                 unset($_SESSION['ajoutEf']);
             }
+
             if(isset($_SESSION['errAjoutEf'])){
-                echo "<script>M.toast({html:'Cette personne existe déjà'})</script>";
+                echo"              
+                <div class='toast align-items-center position-absolute top-50 start-50 translate-middle text-white bg-secondary' id='myToast' role='alert' aria-live='assertive' aria-atomic='true' data-bs-delay='1700'>
+                    <div class='d-flex justify-content-center'>    
+                        <div class='toast-body'>
+                            Cette personne existe déjà
+                        </div>
+                    </div>
+                </div>
+                ";
                 unset($_SESSION['errAjoutEf']);
             }
+
             if(isset($_SESSION['supEf'])){
-                echo "<script>M.toast({html:'Suppression réussite'})</script>";
+                echo"              
+                <div class='toast align-items-center position-absolute top-50 start-50 translate-middle text-white bg-secondary' id='myToast' role='alert' aria-live='assertive' aria-atomic='true' data-bs-delay='1700'>
+                    <div class='d-flex justify-content-center'>    
+                        <div class='toast-body'>
+                            Suppression réussite
+                        </div>
+                    </div>
+                </div>
+                ";
                 unset($_SESSION['supEf']);
             }
+
             if(isset($_SESSION['upEf'])){
-                echo "<script>M.toast({html:' Cette personne est licencié'})</script>";
+                echo"              
+                <div class='toast align-items-center position-absolute top-50 start-50 translate-middle text-white bg-secondary' id='myToast' role='alert' aria-live='assertive' aria-atomic='true' data-bs-delay='1700'>
+                    <div class='d-flex justify-content-center'>    
+                        <div class='toast-body'>
+                            Cette personne est licencié
+                        </div>
+                    </div>
+                </div>
+                ";
                 unset($_SESSION['upEf']);
             }
         }

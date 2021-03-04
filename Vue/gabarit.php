@@ -13,7 +13,7 @@
     </head>  
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container-fluid">
-        <a class="navbar-brand" href="">Navbar</a>
+        <a class="navbar-brand logo" href=""></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -32,11 +32,11 @@
                       <li><a class="dropdown-item" href="convocation/index/">Voir les convocations</a></li>
                     </ul>
                   </li>                   
-                  <li class="nav-item"><a class="nav-link" href="rencontre/index/">Rencontre</a></li>
-                  <li class="nav-item"><a class="nav-link" href="effectif/index/">Effectif</a></li>                  
+                  <li class="nav-item"><a id="navRenc" class="nav-link" href="rencontre/index/">Rencontre</a></li>
+                  <li class="nav-item"><a id="navEff" class="nav-link" href="effectif/index/">Effectif</a></li>                  
                 <!-- on teste si l'utilisateur est le secretaire -->
                 <?php elseif($_SESSION['type'] == "secretaire") : ?>
-                  <li class="nav-item"><a class="nav-link" href="convocation/index/">Convocation</a></li>
+                  <li class="nav-item"><a id="navConv" class="nav-link" href="convocation/index/">Convocation</a></li>
                   <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="dropdownRencontre" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Rencontre
@@ -68,10 +68,10 @@
                 <li class="nav-item"><a class="nav-link" href="connexion/deconnect/">Deconnexion</a></li>
               <!-- menu si l'utilisateur n'est pas connecté -->
               <?php else: ?>
-                <li class="nav-item"><a class="nav-link" href="convocation/index/">Convocation</a></li>
-                <li class="nav-item"><a class="nav-link" href="rencontre/index/">Rencontre</a></li>
-                <li class="nav-item"><a class="nav-link" href="absence/index/">Absence</a></li>
-                <li class="nav-item"><a class="nav-link" href="connexion/index/">Connexion</a></li>
+                <li class="nav-item"><a id="navConv" class="nav-link" href="convocation/index/">Convocation</a></li>
+                <li class="nav-item"><a id="navRenc" class="nav-link" href="rencontre/index/">Rencontre</a></li>
+                <li class="nav-item"><a id="navAbs" class="nav-link" href="absence/index/">Absence</a></li>
+                <li class="nav-item"><a id="navCon" class="nav-link" href="connexion/index/">Connexion</a></li>
               <?php endif; ?>
           </ul>
         </div>
@@ -79,13 +79,15 @@
     </nav>
     <body>
       <div id="global">
-        <div class="container margin-h">
+        <div class="container-fluid bg-gabarit">
           <?= $contenu ?>
         </div>
       </div>
       <footer class="footer mt-auto py-3 bg-dark">
-        <div class="container">
-          <span class="text-muted">Copyright © <?= date('Y'); ?>  Site football</span>
+        <div class="container p-4">
+          <div class="text-center p-3">
+            <span class="text-white">Copyright © <?= date('Y'); ?> Site football</span>  
+          </div>
         </div>
       </footer>
     </body>
