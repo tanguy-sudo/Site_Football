@@ -34,7 +34,7 @@ class Effectif extends Modele {
         $this->executerRequete($sql, array($id));
     }
 
-//mettre a jour un effctif
+//mettre a jour un effectif
     public function UpdEffectif($id) {
         $sql = "UPDATE effectif
                 SET Licence = 'oui'

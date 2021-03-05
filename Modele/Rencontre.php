@@ -34,6 +34,15 @@ class Rencontre extends Modele {
         return $rencontre->fetch();
     }
 
+// Recuperation une rencontre par id_rencontre
+    public function getRencontreId($id_rencontre){
+        $sql = 'SELECT * 
+                FROM calendrierrencontre
+                WHERE id_rencontre = ?';
+        $rencontre = $this->executerRequete($sql, array($id_rencontre));
+        return $rencontre->fetch();
+    }
+
 // Ajout d'une rencontre
     public function addRencontre($categorie, $competition, $Equipe, $EquipeAdv, $date,
     $heure, $terrain, $site) {
@@ -41,6 +50,14 @@ class Rencontre extends Modele {
                 values(?, ?, ?, ?, ?, ?, ?, ?)';
         $rencontre = $this->executerRequete($sql, array($categorie, $competition, $Equipe, $EquipeAdv, $date,
         $heure, $terrain, $site));
+    }
+
+// Mise à jour d'une rencontre
+    public function updateRencontre($EquipeAdv, $date, $heure, $terrain, $site, $id_rencontre){
+        $sql = "UPDATE calendrierrencontre
+                SET  equipeAdverse = ?, date = ?, heure = ?, terrain = ?, site = ?
+                WHERE id_rencontre = ?";
+        $this->executerRequete($sql, array($EquipeAdv, $date, $heure, $terrain, $site, $id_rencontre));
     }
 
 }
