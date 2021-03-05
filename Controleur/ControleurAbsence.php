@@ -60,7 +60,7 @@ class ControleurAbsence extends Controleur {
 
     public function ajoutAbsence(){
         if($this->isConnect()){
-            $effectifs = $this->effectif->getEffectifs();
+            $effectifs = $this->effectif->getEffectifsNonLicencie();
             $this->genererVue(array('effectifs' => $effectifs)); 
         }
     }

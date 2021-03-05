@@ -26,7 +26,7 @@
                     <?php if(isset($_SESSION['valideConnexion']) && $_SESSION['valideConnexion'] == true &&  $_SESSION['type'] == 'secretaire') : ?>
                         <form method="post" action="effectif/supprimer/">
                             <td> <input type="hidden" name="id" value="<?= $effectif['id_effectif'] ?>" /> </td>
-                            <td> <input type="submit" value="Supprimer" /> </td>
+                            <td> <input type="submit" value="supprimer" /> </td>
                         </form> 
                         <?php if($this->nettoyer($effectif['Licence']) == 'non') : ?>
                             <form method="post" action="effectif/modifieLicence/">

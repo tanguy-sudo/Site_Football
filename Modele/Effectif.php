@@ -11,6 +11,13 @@ class Effectif extends Modele {
         return $effectifs;
     }
 
+// Renvoie la liste des effectifs non licencié
+    public function getEffectifsNonLicencie(){
+        $sql = "SELECT * FROM effectif WHERE Licence = 'oui'";
+        $effectifs = $this->executerRequete($sql);
+        return $effectifs;
+    }
+
 // Ajout d'un nouvel effectif
     public function addEffectifs($nom, $prenom, $typelicence, $Licencie) {
         $sql = 'insert into effectif(typeLicence, prenom, nom, Licence) values(?, ?, ?, ?)';
