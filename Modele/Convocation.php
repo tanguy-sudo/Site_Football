@@ -30,4 +30,12 @@ class Convocation extends Modele {
         return $convocation->fetch();
     }
 
+// supprime de la table convocation une convocation
+    public function delConvocation($id_rencontre){
+        $sql = 'DELETE 
+                FROM convocation
+                WHERE id_rencontre = ?';
+        $this->executerRequete($sql, array($id_rencontre));
+    }
+
 }

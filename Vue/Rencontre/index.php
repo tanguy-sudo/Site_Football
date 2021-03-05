@@ -14,6 +14,8 @@
             <th scope="col">Site</th>
             <th scope="col"></th>
             <th scope="col"></th>
+            <th scope="col"></th>
+            <th scope="col"></th>
             </tr>
         </thead>
         <tbody>
@@ -32,6 +34,10 @@
                         <form method="post" action="rencontre/modifRencontre">
                             <td> <input type="hidden" name="id" value="<?= $rencontre['id_rencontre'] ?>" /> </td>
                             <td> <input type="submit" value="modifier" /> </td>
+                        </form> 
+                        <form method="post" name="formSupprimerRencontre" action="rencontre/supprimer" onsubmit="return deleteRencontre()">
+                            <td> <input type="hidden" name="id" value="<?= $rencontre['id_rencontre'] ?>" /> </td>
+                            <td> <input type="submit" value="supprimer"/> </td>
                         </form> 
                     <?php endif; ?>
                 </tr>

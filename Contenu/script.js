@@ -31,3 +31,14 @@ function $_GET_PATH() {
         var path = window.location.href.split("/");
         return path[4] ? path[4] : null;
 }
+
+function deleteRencontre(){        
+        if (confirm('Souhaitez-vous réellement supprimer cette rencontre, cela peut entraîner la suppression d\'une convocation ?')) {
+                // oui
+                return true;
+                
+        } else {
+                // non
+                return false;
+        }
+}

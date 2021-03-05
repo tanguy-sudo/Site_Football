@@ -25,7 +25,7 @@
                     <?php if(isset($_SESSION['valideConnexion']) && $_SESSION['valideConnexion'] == true) : ?>
                         <form method="post" action="absence/supprimer">
                             <td> <input type="hidden" name="id" value="<?= $absence['id_absence'] ?>" /> </td>
-                            <td> <input type="submit" value="Supprimer" /> </td>
+                            <td> <input type="submit" value="supprimer" /> </td>
                         </form> 
                     <?php endif; ?>
                 </tr>

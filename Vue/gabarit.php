@@ -70,7 +70,6 @@
               <?php else: ?>
                 <li class="nav-item"><a id="navConv" class="nav-link" href="convocation/index/">Convocation</a></li>
                 <li class="nav-item"><a id="navRenc" class="nav-link" href="rencontre/index/">Rencontre</a></li>
-                <li class="nav-item"><a id="navAbs" class="nav-link" href="absence/index/">Absence</a></li>
                 <li class="nav-item"><a id="navCon" class="nav-link" href="connexion/index/">Connexion</a></li>
               <?php endif; ?>
           </ul>

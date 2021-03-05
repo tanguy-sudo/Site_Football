@@ -60,4 +60,12 @@ class Rencontre extends Modele {
         $this->executerRequete($sql, array($EquipeAdv, $date, $heure, $terrain, $site, $id_rencontre));
     }
 
+// supprime de la table rencontre un enregistrement
+    public function delRencontre($id_rencontre){
+        $sql = 'DELETE 
+                FROM calendrierrencontre
+                WHERE id_rencontre = ?';
+        $this->executerRequete($sql, array($id_rencontre));
+    }
+
 }

@@ -3,15 +3,18 @@
 require_once 'Framework/Controleur.php';
 require_once 'Modele/Rencontre.php';
 require_once 'Modele/Convocation.php';
+require_once 'Modele/Convoquee.php';
 
 class ControleurRencontre extends Controleur {
     
     private $rencontre;
     private $convocation;
+    private $convoquee;
 
     public function __construct() {
         $this->rencontre = new Rencontre();
         $this->convocation = new Convocation();
+        $this->convoquee = new Convoquee();
     }
 
     public function index() {
@@ -68,6 +71,19 @@ class ControleurRencontre extends Controleur {
             </div>
             ";
             unset($_SESSION['errUpRen']);
+        }
+
+        if(isset($_SESSION['DelRen'])){
+            echo"              
+            <div class='toast align-items-center position-absolute top-50 start-50 translate-middle text-white bg-secondary' id='myToast' role='alert' aria-live='assertive' aria-atomic='true' data-bs-delay='4000'>
+                <div class='d-flex justify-content-center'>    
+                    <div class='toast-body'>
+                        Cette rencontre a bien été supprimé
+                    </div>
+                </div>
+            </div>
+            ";
+            unset($_SESSION['DelRen']);
         }
     }
 
@@ -142,6 +158,28 @@ class ControleurRencontre extends Controleur {
             && isset($date) && isset($heure) && isset($terrain) && isset($site)){
                 $this->rencontre->updateRencontre($EquipeAdv, $date, $heure, $terrain, $site, $id_rencontre);
                 $_SESSION['UpRen']='UpRen';
+                $this->executerAction('index');
+            }
+        }
+    }
+
+    public function supprimer(){
+        if($this->SecretaireisConnected()){
+            $id_rencontre = $this->requete->getParametre("id");
+            
+            if(isset($id_rencontre)){
+                //testé si $convo retourne quelque chose
+                $convo = $this->convocation->getConvocationIdRen($id_rencontre);
+                if($convo){
+                    $id_convocation = $convo['id_convocation'];
+                    // on supprime les convoqués
+                    $this->convoquee->delConvoquee($id_convocation);
+                }
+                // on supprime la convocation liée a la rencontre
+                $this->convocation->delConvocation($id_rencontre);
+                // on supprime la rencontre
+                $this->rencontre->delRencontre($id_rencontre);
+                $_SESSION['DelRen']='DelRen';
                 $this->executerAction('index');
             }
         }
