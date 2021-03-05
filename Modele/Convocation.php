@@ -29,6 +29,14 @@ class Convocation extends Modele {
         $convocation = $this->executerRequete($sql, array($id_rencontre));
         return $convocation->fetch();
     }
+    
+    	public function getrencontre($date) {
+        $sql = 'SELECT *  
+                FROM calendrierrencontre                 
+                WHERE date=?';
+        $calendrier = $this->executerRequete($sql, array($date));
+        return $calendrier;
+    }
 
 // supprime de la table convocation une convocation
     public function delConvocation($id_rencontre){
