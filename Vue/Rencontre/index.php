@@ -12,6 +12,8 @@
             <th scope="col">Heure</th>
             <th scope="col">Terrain</th>
             <th scope="col">Site</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
             </tr>
         </thead>
         <tbody>
@@ -26,6 +28,12 @@
                     <td> <?= $this->nettoyer($rencontre['heure']) ?> </td>
                     <td> <?= $this->nettoyer($rencontre['terrain']) ?> </td>
                     <td> <?= $this->nettoyer($rencontre['site']) ?> </td>
+                    <?php if(isset($_SESSION['valideConnexion']) && $_SESSION['valideConnexion'] == true && $_SESSION['type'] == "secretaire") : ?>
+                        <form method="post" action="rencontre/modifRencontre">
+                            <td> <input type="hidden" name="id" value="<?= $rencontre['id_rencontre'] ?>" /> </td>
+                            <td> <input type="submit" value="modifier" /> </td>
+                        </form> 
+                    <?php endif; ?>
                 </tr>
             <?php endforeach; ?>
         </tbody>

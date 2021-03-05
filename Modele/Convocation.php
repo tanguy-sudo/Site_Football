@@ -22,4 +22,12 @@ class Convocation extends Modele {
             return $convocation->fetchAll();
     }
 
+    public function getConvocationIdRen($id_rencontre) {
+        $sql = 'SELECT *  
+                FROM convocation 
+                WHERE id_rencontre = ?';
+        $convocation = $this->executerRequete($sql, array($id_rencontre));
+        return $convocation->fetch();
+    }
+
 }
