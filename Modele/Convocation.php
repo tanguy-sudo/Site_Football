@@ -21,6 +21,24 @@ class Convocation extends Modele {
         $convocation = $this->executerRequete($sql);
             return $convocation->fetchAll();
     }
+
+    public function getConvocationIdRen($id_rencontre) {
+        $sql = 'SELECT *  
+                FROM convocation 
+                WHERE id_rencontre = ?';
+        $convocation = $this->executerRequete($sql, array($id_rencontre));
+        return $convocation->fetch();
+    }
+
+    // supprime de la table convocation une convocation
+    public function delConvocation($id_rencontre){
+        $sql = 'DELETE 
+                FROM convocation
+                WHERE id_rencontre = ?';
+        $this->executerRequete($sql, array($id_rencontre));
+    }
+
+    
     
     public function getdateConv(){
 		$sql= "SELECT DISTINCT date 
@@ -37,8 +55,8 @@ class Convocation extends Modele {
         return $absence->fetch();
     }
 
-		public function geteffectifAbs($date,$dates)
-		{$sql='select *
+		public function geteffectifAbs($date,$dates){
+            $sql='select *
 				from effectif
 				where id_effectif not in (SELECT id_effectif 
                 FROM absence
@@ -51,18 +69,18 @@ class Convocation extends Modele {
 		
 		}
 
-			public function addconvoc($id_convocation,$id_effectif){
+		public function addconvoc($id_convocation,$id_effectif){      
 			$sql="Insert into convoquee(id_effectif,id_convocation) values(?,?)";
 			$this->executerRequete($sql,array($id_effectif,$id_convocation));		
-			}		
+		}		
 		
-			public function getrencontre($date) {
-        $sql = 'SELECT *  
-                FROM calendrierrencontre                 
-                WHERE date=?';
-        $calendrier = $this->executerRequete($sql, array($date));
-        return $calendrier;
-    }
+		public function getrencontre($date) {
+            $sql = 'SELECT *  
+                    FROM calendrierrencontre                 
+                    WHERE date=?';
+            $calendrier = $this->executerRequete($sql, array($date));
+            return $calendrier;
+        }
     
     public function getidrencontre($equipe,$date){
      $sql = 'SELECT id_convocation  
