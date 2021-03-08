@@ -23,16 +23,17 @@ class ControleurConvocation extends Controleur {
     }
 
     public function ajoutConvocation() {
-            if($this->EntraineurisConnected()){
-                
-            $date = empty($this->requete->getParametre("date")) ? date("Y-m-d") : implode('-', array_reverse(explode('/', $this->requete->getParametre("date"))));
-            $convocations = $this->convocation->getConvocation($date);
-            $effectifs = $this->convocation->geteffectifAbs($date,$date);
-            $calendrier =$this->convocation->getrencontre($date);
-            $this->genererVue(array('convocations' => $convocations,
-                                    'effectifs'  => $effectifs,
-                                    'dateChoisi' => $date,
-                                    'rencontre' => $calendrier));  
+            if($this->EntraineurisConnected()){             
+                $date = empty($this->requete->getParametre("date")) ? date("Y-m-d") : implode('-', array_reverse(explode('/', $this->requete->getParametre("date"))));
+                $convocations = $this->convocation->getConvocation($date);
+                $effectifs = $this->convocation->geteffectifAbs($date,$date);
+                $calendrier =$this->convocation->getrencontre($date);
+                $this->genererVue(array('convocations' => $convocations,
+                                        'effectifs'  => $effectifs,
+                                        'dateChoisi' => $date,
+                                        'rencontre' => $calendrier
+                                        )
+                                );
             }
         } 
 	
