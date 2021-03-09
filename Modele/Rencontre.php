@@ -52,13 +52,23 @@ class Rencontre extends Modele {
         $heure, $terrain, $site));
     }
 
-// Mise à jour d'une rencontre
+// Mise à jour partiel d'une rencontre
     public function updateRencontre($EquipeAdv, $date, $heure, $terrain, $site, $id_rencontre){
         $sql = "UPDATE calendrierrencontre
                 SET  equipeAdverse = ?, date = ?, heure = ?, terrain = ?, site = ?
                 WHERE id_rencontre = ?";
         $this->executerRequete($sql, array($EquipeAdv, $date, $heure, $terrain, $site, $id_rencontre));
     }
+
+// Mise à jour complette d'une rencontre
+public function updateRencontreAll($categorie, $competition, $Equipe, $EquipeAdverse, $date,
+    $heure, $terrain, $site, $id_rencontre){
+    $sql = "UPDATE calendrierrencontre
+            SET  categorie = ?, competition = ?, equipe = ?, equipeAdverse = ?, date = ?, heure = ?, terrain = ?, site = ?
+            WHERE id_rencontre = ?";
+    $this->executerRequete($sql, array($categorie, $competition, $Equipe, $EquipeAdverse, $date,
+    $heure, $terrain, $site, $id_rencontre));
+}
 
 // supprime de la table rencontre un enregistrement
     public function delRencontre($id_rencontre){

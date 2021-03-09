@@ -20,7 +20,11 @@
       
       <div class="row mb-3">
         <div class="form-floating col-md-6">
-          <input id="Equipe" type="text" class="form-control" name="Equipe" required>
+          <select id="Equipe" name="Equipe" class="form-select" required>
+                <option value="SeniorsA">Seniors A</option>
+                <option value="SeniorsB">Seniors B</option>
+                <option value="SeniorsC">Seniors C</option>
+          </select>
           <label for="Equipe">Equipe</label>
         </div>
         <div class="form-floating col-md-6">

@@ -42,6 +42,7 @@
                     Rencontre
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="dropdownRencontre">
+                      <li><a class="dropdown-item" href="rencontre/importDonnee/">Importer des rencontres</a></li>
                       <li><a class="dropdown-item" href="rencontre/ajoutRencontre/">Ajouter une rencontre</a></li>
                       <li><a class="dropdown-item" href="rencontre/index/">Voir les rencontres</a></li>
                     </ul>

@@ -85,6 +85,19 @@ class ControleurRencontre extends Controleur {
             ";
             unset($_SESSION['DelRen']);
         }
+
+        if(isset($_SESSION['ImportRen'])){
+            echo"              
+            <div class='toast align-items-center position-absolute top-50 start-50 translate-middle text-white bg-secondary' id='myToast' role='alert' aria-live='assertive' aria-atomic='true' data-bs-delay='4000'>
+                <div class='d-flex justify-content-center'>    
+                    <div class='toast-body'>
+                        Import réussi
+                    </div>
+                </div>
+            </div>
+            ";
+            unset($_SESSION['ImportRen']);
+        }
     }
 
     
@@ -181,6 +194,44 @@ class ControleurRencontre extends Controleur {
                 $this->rencontre->delRencontre($id_rencontre);
                 $_SESSION['DelRen']='DelRen';
                 $this->executerAction('index');
+            }
+        }
+    }
+
+    public function importDonnee(){
+        if($this->SecretaireisConnected()){
+            $this->genererVue();
+        }
+    }
+
+    public function import(){
+        if($this->SecretaireisConnected()){
+            $fichier = $this->requete->getParametre("CsvFile");     
+            if (file_exists($fichier) && $id_file = fopen($fichier, "r")) {
+                while ($tab = fgetcsv($id_file, 200, ";")) {
+                    //Si la première ligne du fichier contient les noms des colonnes on ne la lit pas
+                    if($tab[0] != 'Categorie'){
+                        $categorie = $tab[0];
+                        $competition = $tab[1];
+                        $Equipe = $tab[2];
+                        $EquipeAdverse = $tab[3];
+                        $date = implode('-', array_reverse(explode('/', $tab[4])));
+                        $heure = $tab[5];
+                        $terrain = $tab[6];
+                        $site = $tab[7];
+
+                        $res = $this->rencontre->getRencontre($categorie, $competition, $Equipe, $EquipeAdverse, $date,
+                        $heure, $terrain, $site);
+                        //je verifie que ma rencontre n'existe déjà pas
+                        if(!$res){
+                            $this->rencontre->addRencontre($categorie, $competition, $Equipe, $EquipeAdverse, $date,
+                            $heure, $terrain, $site);        
+                        }
+                        $_SESSION['ImportRen']='ImportRen';
+                        $this->executerAction('index'); 
+                    }
+                }
+                fclose($id_file);
             }
         }
     }

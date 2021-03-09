@@ -42,3 +42,25 @@ function deleteRencontre(){
                 return false;
         }
 }
+
+function FileIsCsv(frm){
+        var ok=1;
+        if (frm.elements['CsvFile'].value =="") {
+                ok=0;
+                alert('Vous devez fournir un fichier .csv');
+                return false;
+        }
+        else if (frm.elements['CsvFile'].value.substr(-4)!=".csv") {
+                ok=0;
+                alert('Le fichier doit être fourni en format .csv');
+                return false;
+        }
+
+        //si tout est ok
+        if (ok==1){
+                return true;
+        }
+        else {
+                return false;
+        }
+}
