@@ -6,6 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <link type="text/css" rel="stylesheet" href="Contenu/bootstrap/bootstrap-datepicker.css" />
         <link type="text/css" rel="stylesheet" href="Contenu/style.css" />
         <link type="text/css" rel="stylesheet" href="Contenu/bootstrap/css/bootstrap.min.css" />
       
@@ -91,6 +92,7 @@
         </div>
       </footer>
     </body>
+<script src="Contenu/bootstrap/bootstrap-datepicker.js"></script>
 <script type="text/javascript" src="Contenu/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script type="text/javascript" src="Contenu/script.js"></script>
 </html>

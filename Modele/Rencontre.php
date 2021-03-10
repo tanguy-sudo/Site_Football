@@ -11,6 +11,13 @@ class Rencontre extends Modele {
         return $rencontres;
     }
 
+// Renvoie la liste des rencontres trié par date
+    public function getRencontresFilterDate() {
+        $sql = 'SELECT * FROM calendrierrencontre ORDER BY date DESC';
+        $rencontres = $this->executerRequete($sql);
+        return $rencontres;
+    }
+
 // Recuperation des valeurs de de la colonne 'competition' car c'est un type ENUM
     public function getCompetitions() {
         $sql = "SHOW COLUMNS FROM calendrierrencontre LIKE 'competition'";

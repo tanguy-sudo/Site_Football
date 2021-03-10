@@ -11,7 +11,7 @@
                     <label for="floatingSelect">Effectifs</label>
         </div>
         <div class="form-floating mb-3">
-                <input type="date" class="form-control" id="dateConv" name="date" value="<?= date('Y-m-d');?>" required>  
+                <input type="text" class="form-control date" id="dateConv" name="date" value="<?= date('d/m/Y');?>" required />
                 <label for="dateConv">Date de convocation</label>
         </div>
         <div class="form-floating mb-3">

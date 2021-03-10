@@ -12,6 +12,14 @@ class Absence extends Modele {
         return $absences;
     }
 
+// Renvoie la liste des absences
+    public function getAbsencesFilterDate() {
+        $sql = 'SELECT * 
+                FROM absence a JOIN effectif e ON a.id_Effectif = e.id_effectif ORDER BY date DESC';
+        $absences = $this->executerRequete($sql);
+        return $absences;
+    }
+
 // Ajoute une absence
     public function addAbsence($id, $date, $code){
         $sql = 'insert into absence(codeAbsence, date, id_Effectif) values(?, ?, ?)';

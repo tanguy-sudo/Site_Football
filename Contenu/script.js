@@ -2,6 +2,24 @@ $(document).ready(function(){
         $("#myToast").toast('show');
 });
 
+$.fn.datepicker.dates['fr'] = {
+        days: ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'],
+        daysShort: ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam'],
+        daysMin: ['D', 'L', 'M', 'M', 'J', 'V', 'S'],
+        months: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
+        monthsShort: ['Jan', 'Fev', 'Mar', 'Avr', 'Mai', 'Jun', 'Jul', 'Aou', 'Sep', 'Oct', 'Nov', 'Dec'],
+        today: "Today",
+        clear: "Clear",
+        format: "mm/dd/yyyy",
+        titleFormat: "MM yyyy", /* Leverages same syntax as 'format' */
+        weekStart: 0
+};
+
+$('.date').datepicker({
+        multidate: true,
+        format: 'dd/mm/yyyy',
+        language: 'fr'
+});
 
 $(document).ready(function(){
         switch($_GET_PATH()){

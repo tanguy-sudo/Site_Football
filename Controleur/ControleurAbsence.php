@@ -15,7 +15,7 @@ class ControleurAbsence extends Controleur {
     }
 
     public function index(){
-            $absences =$this->absence->getAbsences();
+            $absences =$this->absence->getAbsencesFilterDate();
             $this->genererVue(array('absences' => $absences));
 
             if(isset($_SESSION['ajoutAb'])){
@@ -68,20 +68,26 @@ class ControleurAbsence extends Controleur {
     public function valideAbsence(){
         if($this->isConnect()){
             $id = $this->requete->getParametre("idEffectif");
-            $date = empty($this->requete->getParametre("date")) ? date("Y-m-d") : implode('-', array_reverse(explode('/', $this->requete->getParametre("date"))));
+            $dates = $this->requete->getParametre("date");
             $code = $this->requete->getParametre("code");
-            $uneAbsence = $this->absence->getAbsence($id, $date, $code);
-            if(!$uneAbsence){
-                if(isset($id) && isset($date) && isset($code)){
-                    $_SESSION['ajoutAb']='ajoutAb';
-                    $this->absence->addAbsence($id, $date, $code);
-                    $this->executerAction('index');
+            
+            $tabDates = explode(',', $dates);
+            // je parcours toutes les dates selectionnées pour les insérer
+            foreach($tabDates as $dateFr){
+                $datePhp = implode('-', array_reverse(explode('/', $dateFr)));
+                $uneAbsence = $this->absence->getAbsence($id, $datePhp, $code);
+
+                if(!$uneAbsence){
+                    if(isset($id) && isset($dates) && isset($code)){
+                        $_SESSION['ajoutAb']='ajoutAb';
+                        $this->absence->addAbsence($id, $datePhp, $code);
+                    }
+                }
+                else{
+                    $_SESSION['errAjoutAb']='errAjoutAb';
                 }
             }
-            else{
-                $_SESSION['errAjoutAb']='errAjoutAb';
-                $this->executerAction('index');
-            }
+            $this->executerAction('index');
         }
     }
 

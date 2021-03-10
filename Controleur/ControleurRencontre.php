@@ -18,7 +18,7 @@ class ControleurRencontre extends Controleur {
     }
 
     public function index() {
-        $rencontres = $this->rencontre->getRencontres();
+        $rencontres = $this->rencontre->getRencontresFilterDate();
         $this->genererVue(array('rencontres' => $rencontres));
 
         if(isset($_SESSION['errAjoutRen'])){
