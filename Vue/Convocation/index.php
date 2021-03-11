@@ -16,9 +16,11 @@
             <h5 class="text-center">Aucune convocation pour cette date</h5>
         <?php endif; ?>
             <?php foreach($convocations as $convocation): ?>
+              
                 <div class="col s4">
                     <div class="card-panel grey lighten-5">
                         <table class="table">
+                       
                             <tr><th scope="col">Compétition : </td><td> <?= $this->nettoyer($convocation['competition']) ?> </td></tr>
                             <tr><th scope="col">Equipe adverse :</td><td> <?= $this->nettoyer($convocation['equipeAdverse']) ?> </td></tr>
                             <tr><th scope="col">Site :</td><td> <?= $this->nettoyer($convocation['site']) ?> </td></tr>
@@ -40,9 +42,16 @@
                                     </tr>
                                         <?php endif; ?>
                             <?php endforeach; ?> 
+                       <?php if(isset($_SESSION['valideConnexion']) && $_SESSION['valideConnexion'] == true) : ?>
+                        <form method="post" action="convocation/supprimer">
+                            <td> <input type="hidden" name="id" value="<?= $convocation['id_convocation'] ?>" /> </td>
+                            <td> <input type="submit" value="supprimer" /> </td>
+                        </form> 
+                    <?php endif; ?>
                         </table>
                     </div>
                 </div>
+                
             <?php endforeach; ?>
     </div>
 </div>
