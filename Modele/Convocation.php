@@ -31,13 +31,19 @@ class Convocation extends Modele {
     }
 
     // supprime de la table convocation une convocation
-    public function delConvocation($id_rencontre){
+    public function delConvocation($id_convocation){
         $sql = 'DELETE 
                 FROM convocation
-                WHERE id_rencontre = ?';
-        $this->executerRequete($sql, array($id_rencontre));
+                WHERE id_convocation = ?';
+        $this->executerRequete($sql, array($id_convocation));
     }
 
+	public function delConvoque($id_convocation){
+		$sql="DELETE 
+                FROM convoquee
+                WHERE id_convocation = ?";
+                $this->executerRequete($sql,array($id_convocation));
+	}
     
     
     public function getdateConv(){
@@ -69,10 +75,24 @@ class Convocation extends Modele {
 		
 		}
 
-		public function addconvoc($id_convocation,$id_effectif){      
-			$sql="Insert into convoquee(id_effectif,id_convocation) values(?,?)";
-			$this->executerRequete($sql,array($id_effectif,$id_convocation));		
+		public function addconvoc($id_rencontre,$id_effectif){      
+			$sql='insert into convoquee(id_effectif,id_convocation) values(?,?)';
+			$this->executerRequete($sql, array($id_effectif,$id_rencontre));		
 		}		
+		
+		public function creatconvoc($id_rencontre){
+		$sql="insert into convocation(id_rencontre) values(?)";
+			$this->executerRequete($sql, array($id_rencontre));	
+		
+		}
+		
+		
+		public function getidconv($id_rencontre){
+			$sql="select id_convocation from convocation where id_rencontre=$id_rencontre";
+			$conv=$this->executerRequete($sql, array($id_rencontre));
+			return $conv->fetch();	
+		}
+		
 		
 		public function getrencontre($date) {
             $sql = 'SELECT *  
@@ -81,13 +101,20 @@ class Convocation extends Modele {
             $calendrier = $this->executerRequete($sql, array($date));
             return $calendrier;
         }
+        public function getrencontreF($date) {
+            $sql = 'SELECT *  
+                    FROM calendrierrencontre                 
+                    WHERE date=?';
+            $calendrier = $this->executerRequete($sql, array($date));
+            return $calendrier->fetchAll();
+        }
     
     public function getidrencontre($equipe,$date){
-     $sql = 'SELECT id_convocation  
-                FROM convocation co join calendrierrencontre ca on co.id_rencontre=ca.id_rencontre                
+     $sql = 'SELECT id_rencontre  
+                FROM calendrierrencontre                 
                 WHERE date=? and equipe=? ';
         $calendrier = $this->executerRequete($sql, array($date,$equipe));
-        return $calendrier;
+        return $calendrier->fetch();
     
     
     }
