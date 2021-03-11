@@ -39,21 +39,51 @@ class ControleurConvocation extends Controleur {
 	
         public function valideConvocation(){
             if($this->isConnect()){
-                $date = empty($this->requete->getParametre("date")) ? date("Y-m-d") : implode('-', array_reverse(explode('/', $this->requete->getParametre("date"))));
-                $calendrier =$this->convocation->getrencontre($date);
-                $equipe=$this->requete->getParametre("ekip");
-                $id_convocation= $this->convocation->getidrencontre($equipe,$date);
-                for ($i=0;$i<14;$i++){
-                    
-                    $id = $this->requete->getParametre("idEffectif$i");
-                    
-                    if($id!="null"){
-                        $this->Convocation->addconvoc($id_convocation,$id);
-                    }		
-                }
+                $date = $this->requete->getParametre("date");
+                $calendrier =$this->convocation->getrencontreF($date);
+              
+             
+                $c=0;
+               foreach($calendrier as $rencontre)
+               { $c++;     
+               $a=$rencontre['equipe'];
+				       
+								$b= $this->convocation->getidrencontre($a,$date);
+								
+												          
+				        $id_match=$b['0'];
+				        $this->convocation->creatconvoc($id_match);
+				        $b=$this->convocation->getidconv($id_match);
+				        $id_conv=$b['0'];
+				       
+                		for ($i=0;$i<14;$i++){
+                			
+                			
+							  $val=$this->requete->getParametre("idEffectif$i,$c");
+								if($val!="null"){
+															
+							$this->convocation->addconvoc($id_conv,$val);
+							$this->executerAction('index');
+								}
+                		}
+               	    
+					}
+					}}
+
+
+		public function supprimer(){
+        if($this->isConnect()){
+            $id = $this->requete->getParametre("id");
+            if(isset($id)){
+                $_SESSION['supConv']='supConv';
+                $this->convocation->delConvocation($id);
+                $this->convocation->delConvoque($id);
+                $this->executerAction('index');
             }
         }
+    }
+
+
 
 }
-
 ?>
