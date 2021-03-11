@@ -1,6 +1,9 @@
 <?php
+namespace Framework;
 
-require_once 'Configuration.php';
+use Framework\Configuration;
+use Exception;
+//require_once 'Configuration.php';
 
 class Vue {
 

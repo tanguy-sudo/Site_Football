@@ -1,9 +1,14 @@
 <?php
 
-require_once 'Framework/Controleur.php';
-require_once 'Modele/Rencontre.php';
-require_once 'Modele/Convocation.php';
-require_once 'Modele/Convoquee.php';
+use Modeles\Rencontre;
+use Modeles\Convocation;
+use Modeles\Convoquee;
+
+//require_once 'Modele/Rencontre.php';
+//require_once 'Modele/Convocation.php';
+//require_once 'Modele/Convoquee.php';
+
+use Framework\Controleur;
 
 class ControleurRencontre extends Controleur {
     
@@ -189,7 +194,7 @@ class ControleurRencontre extends Controleur {
                     $this->convoquee->delConvoquee($id_convocation);
                 }
                 // on supprime la convocation liée a la rencontre
-                $this->convocation->delConvocation($id_rencontre);
+                $this->convocation->delConvocationIdRen($id_rencontre);
                 // on supprime la rencontre
                 $this->rencontre->delRencontre($id_rencontre);
                 $_SESSION['DelRen']='DelRen';

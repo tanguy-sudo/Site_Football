@@ -1,6 +1,8 @@
 <?php
+namespace Modeles;
 
-require_once 'Framework/Modele.php';
+use Framework\Modele;
+//require_once 'Framework/Modele.php';
 
 class Convocation extends Modele {
 
@@ -17,7 +19,8 @@ class Convocation extends Modele {
     public function geteffectifConv() {
         $sql = 'SELECT *  
                 FROM convoquee co 
-                JOIN effectif ef ON co.id_effectif = ef.id_effectif';
+                JOIN effectif ef ON co.id_effectif = ef.id_effectif
+                ORDER BY ef.prenom';
         $convocation = $this->executerRequete($sql);
             return $convocation->fetchAll();
     }
@@ -28,6 +31,14 @@ class Convocation extends Modele {
                 WHERE id_rencontre = ?';
         $convocation = $this->executerRequete($sql, array($id_rencontre));
         return $convocation->fetch();
+    }
+
+    // supprime de la table convocation une convocation par rapport à l'id de la rencontre
+    public function delConvocationIdRen($id_rencontre){
+        $sql = 'DELETE 
+                FROM convocation
+                WHERE id_rencontre = ?';
+        $this->executerRequete($sql, array($id_rencontre));
     }
 
     // supprime de la table convocation une convocation

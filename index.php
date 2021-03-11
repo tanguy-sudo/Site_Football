@@ -1,6 +1,8 @@
 <?php
+require "vendor/autoload.php";
+//require 'Framework/Routeur.php';
+use Framework\Routeur;
 
-require 'Framework/Routeur.php';
 $routeur = new Routeur();
 $routeur->routerRequete();
 

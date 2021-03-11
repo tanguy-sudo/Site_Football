@@ -16,20 +16,19 @@
             <h5 class="text-center">Aucune convocation pour cette date</h5>
         <?php endif; ?>
             <?php foreach($convocations as $convocation): ?>
-              
                 <div class="col s4">
                     <div class="card-panel grey lighten-5">
                         <table class="table">
                        
-                            <tr><th scope="col">Compétition : </td><td> <?= $this->nettoyer($convocation['competition']) ?> </td></tr>
-                            <tr><th scope="col">Equipe adverse :</td><td> <?= $this->nettoyer($convocation['equipeAdverse']) ?> </td></tr>
-                            <tr><th scope="col">Site :</td><td> <?= $this->nettoyer($convocation['site']) ?> </td></tr>
-                            <tr><th scope="col">Terrain : </td><td> <?= $this->nettoyer($convocation['terrain']) ?> </td></tr>
-                            <tr><th scope="col">Heure : </td><td> <?= $this->nettoyer($convocation['heure']) ?> </td></tr>
-                            <tr><th scope="col">Message : </td><td> <?= $this->nettoyer($convocation['messageRdv']) ?> </td></tr>
-                            <tr><th scope="col">Equipe : </td><td> <?= $this->nettoyer($convocation['equipe']) ?> </td></tr>
+                            <tr><th scope="col">Compétition : </th><td> <?= $this->nettoyer($convocation['competition']) ?> </td></tr>
+                            <tr><th scope="col">Equipe adverse :</th><td> <?= $this->nettoyer($convocation['equipeAdverse']) ?> </td></tr>
+                            <tr><th scope="col">Site :</th><td> <?= $this->nettoyer($convocation['site']) ?> </td></tr>
+                            <tr><th scope="col">Terrain : </th><td> <?= $this->nettoyer($convocation['terrain']) ?> </td></tr>
+                            <tr><th scope="col">Heure : </th><td> <?= $this->nettoyer($convocation['heure']) ?> </td></tr>
+                            <tr><th scope="col">Message : </th><td> <?= $this->nettoyer($convocation['messageRdv']) ?> </td></tr>
+                            <tr><th scope="col">Equipe : </th><td> <?= $this->nettoyer($convocation['equipe']) ?> </td></tr>
                         
-                            <tr><th class="text-center" scope="col" colspan="2">Liste des joueurs :</td></tr>
+                            <tr><th class="text-center" scope="col" colspan="2">Liste des joueurs :</th></tr>
                             <?php foreach($effectifs as $effectif): ?>
                                     <?php 
                                     $a = $this->nettoyer($convocation['id_convocation']);
@@ -42,16 +41,16 @@
                                     </tr>
                                         <?php endif; ?>
                             <?php endforeach; ?> 
-                       <?php if(isset($_SESSION['valideConnexion']) && $_SESSION['valideConnexion'] == true) : ?>
-                        <form method="post" action="convocation/supprimer">
-                            <td> <input type="hidden" name="id" value="<?= $convocation['id_convocation'] ?>" /> </td>
-                            <td> <input type="submit" value="supprimer" /> </td>
-                        </form> 
-                    <?php endif; ?>
+                            <?php if(isset($_SESSION['valideConnexion']) && $_SESSION['valideConnexion'] == true && $_SESSION['type'] == "entraineur") : ?>
+                                <form method="post" action="convocation/supprimer">
+                                    <td> <input type="hidden" name="id" value="<?= $convocation['id_convocation'] ?>" /> </td>
+                                    <td> <input type="submit" value="supprimer" /> </td>
+                                </form> 
+                            <?php endif; ?>
+
                         </table>
                     </div>
-                </div>
-                
+                </div>           
             <?php endforeach; ?>
     </div>
 </div>

@@ -1,0 +1,21 @@
+{
+    "name": "tangu/site_football",
+    "authors": [
+        {
+            "name": "tanguy",
+            "email": "tanguy.jouvin@hotmail.com"
+        },
+        {
+            "name": "dorian letort",
+            "email": "dletort@etud.univ-angers.fr"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Modeles\\": "Modele/",
+            "Framework\\": "Framework/",
+            "Controleur\\": "Controleur/"
+        }
+    },
+    "require": {}
+}

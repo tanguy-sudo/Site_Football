@@ -1,8 +1,12 @@
 <?php
 
-require_once 'Framework/Controleur.php';
-require_once 'Modele/Absence.php';
-require_once 'Modele/Effectif.php';
+use Framework\Controleur;
+use Modeles\Absence;
+use Modeles\Effectif;
+
+//require_once 'Framework/Controleur.php';
+//require_once 'Modele/Absence.php';
+//require_once 'Modele/Effectif.php';
 
 class ControleurAbsence extends Controleur {
 

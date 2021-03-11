@@ -1,8 +1,14 @@
 <?php
+namespace Framework;
 
-require_once 'Controleur.php';
-require_once 'Requete.php';
-require_once 'Vue.php';
+use Framework\Controleur;
+use Framework\Requete;
+use Framework\Vue;
+use Exception;
+
+//require_once 'Controleur.php';
+//require_once 'Requete.php';
+//require_once 'Vue.php';
 
 class Routeur {
 

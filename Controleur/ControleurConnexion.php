@@ -1,7 +1,9 @@
 <?php
 
-require_once 'Framework/Controleur.php';
-require_once 'Modele/Utilisateur.php';
+use Framework\Controleur;
+use Modeles\Utilisateur;
+
+//require_once 'Modele/Utilisateur.php';
 
 class ControleurConnexion extends Controleur {
 

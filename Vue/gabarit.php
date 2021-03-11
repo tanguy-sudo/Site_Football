@@ -68,6 +68,7 @@
                     </ul>
                 </li>  
                 <li class="nav-item"><a class="nav-link" href="connexion/deconnect/">Deconnexion</a></li>
+                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true"><?= ucfirst($_SESSION['type']); ?></a>
               <!-- menu si l'utilisateur n'est pas connecté -->
               <?php else: ?>
                 <li class="nav-item"><a id="navConv" class="nav-link" href="convocation/index/">Convocation</a></li>

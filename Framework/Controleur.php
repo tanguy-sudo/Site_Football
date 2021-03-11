@@ -1,7 +1,13 @@
 <?php
 
-require_once 'Requete.php';
-require_once 'Vue.php';
+namespace Framework;
+
+use Framework\Requete;
+use Framework\Vue;
+use Exception;
+
+//require_once 'Requete.php';
+//require_once 'Vue.php';
 
 /**
  * Classe abstraite Controleur

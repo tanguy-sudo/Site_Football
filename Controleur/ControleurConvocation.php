@@ -1,8 +1,9 @@
 
 <?php
 
-require_once 'Framework/Controleur.php';
-require_once 'Modele/Convocation.php';
+use Framework\Controleur;
+use Modeles\Convocation;
+//require_once 'Modele/Convocation.php';
 
 class ControleurConvocation extends Controleur {
 

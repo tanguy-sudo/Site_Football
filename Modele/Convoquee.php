@@ -1,6 +1,8 @@
 <?php
+namespace Modeles;
 
-require_once 'Framework/Modele.php';
+use Framework\Modele;
+//require_once 'Framework/Modele.php';
 
 class Convoquee extends Modele {
 

@@ -1,6 +1,8 @@
 <?php
+namespace Framework;
 
-require_once 'Configuration.php';
+use PDO;
+//require_once 'Configuration.php';
 
 abstract class Modele {
 

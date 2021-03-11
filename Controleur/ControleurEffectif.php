@@ -1,7 +1,8 @@
 <?php
 
-require_once 'Framework/Controleur.php';
-require_once 'Modele/Effectif.php';
+use Framework\Controleur;
+use Modeles\Effectif;
+//require_once 'Modele/Effectif.php';
 
 class ControleurEffectif extends Controleur {
 

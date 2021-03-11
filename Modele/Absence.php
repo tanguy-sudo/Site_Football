@@ -1,6 +1,8 @@
 <?php
+namespace Modeles;
 
-require_once 'Framework/Modele.php';
+//require_once 'Framework/Modele.php';
+use Framework\Modele;
 
 class Absence extends Modele {
 

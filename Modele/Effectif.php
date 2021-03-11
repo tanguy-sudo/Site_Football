@@ -1,19 +1,21 @@
 <?php
+namespace Modeles;
 
-require_once 'Framework/Modele.php';
+use Framework\Modele;
+//require_once 'Framework/Modele.php';
 
 class Effectif extends Modele {
 
 // Renvoie la liste des effectifs
     public function getEffectifs() {
-        $sql = 'SELECT * FROM effectif';
+        $sql = 'SELECT * FROM effectif ORDER BY prenom';
         $effectifs = $this->executerRequete($sql);
         return $effectifs;
     }
 
 // Renvoie la liste des effectifs non licencié
     public function getEffectifsNonLicencie(){
-        $sql = "SELECT * FROM effectif WHERE Licence = 'oui'";
+        $sql = "SELECT * FROM effectif WHERE Licence = 'oui' ORDER BY prenom";
         $effectifs = $this->executerRequete($sql);
         return $effectifs;
     }
