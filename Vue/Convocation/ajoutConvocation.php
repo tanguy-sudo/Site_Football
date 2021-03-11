@@ -17,7 +17,7 @@
         <?php if($rencontre->rowCount() == 0) : ?>
             <h5 class="text-center">Aucune rencontre pour cette date</h5>   
         <?php endif; ?>
-
+			<?php $compteurRenc=0; ?>
         <form class="row g-3" method="post" action="convocation/valideConvocation">
             <?php foreach($rencontre as $rencontres): ?>
             <?php $compteurRenc++; ?>
@@ -36,7 +36,7 @@
                         <?php for( $i=0 ; $i < 14 ; $i++):?>
                             <div class="form-floating mb-3">
                                     <?php echo $i+1; ?>
-                                        <select class="form-select" name="idEffectif<?php echo $i; ?>"  id="floatingSelect" >
+                                        <select class="form-select" name="idEffectif<?php echo $i;?>,<?php echo $compteurRenc; ?>"  id="floatingSelect" >
                                             <option value="null"> </option>                       
                                             <?php foreach($effectifs as $effectif): ?>
                                                 <option value="<?= $this->nettoyer($effectif['id_effectif']) ?>"> <?= $this->nettoyer($effectif['prenom']).' '. $this->nettoyer($effectif['nom']); ?> </option>         
@@ -45,16 +45,18 @@
                                         <label for="floatingSelect">Effectifs</label>
                             </div>
                         <?php endfor; ?>
-                        <?php if($compteurRenc == 2) : ?>
-                            <div class="mb-3 text-center">
-                                <input type="hidden" name="ekip" value="<?= $this->nettoyer($rencontres['equipe']) ?>" /> 
-                                <button type="submit" name="ajout" class="btn btn-primary mb-3">Valider</button>
-                            </div>
-                        <?php endif; ?>
+                       
                     </div>  
                 </div>     
             <?php endforeach; ?> 
 
+	 <?php if($compteurRenc >= 1) : ?>
+                            <div class="mb-3 text-center">
+                                 <input type="hidden" class="form-control"  name="date" id="dateConv" value="<?= $dateChoisi ?>"/>
+                                <button type="submit" name="ajout" class="btn btn-primary mb-3">Valider</button>
+                            </div>
+                        <?php endif; ?>
+	
         </form>
     </div>   
 </div>
