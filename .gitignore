@@ -1,8 +1,5 @@
 # CakePHP 3
 
-/vendor/*
-/config/*
-
 /tmp/cache/models/*
 !/tmp/cache/models/empty
 /tmp/cache/persistent/*
@@ -22,4 +19,4 @@
 /app/tmp/*
 /app/Config/core.php
 /app/Config/database.php
-/vendors/*
+
