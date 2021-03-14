@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : mar. 02 mars 2021 à 22:18
+-- Généré le : Dim 14 mars 2021 à 16:37
 -- Version du serveur :  8.0.21
 -- Version de PHP : 7.4.9
 
@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS `absence` (
   `id_Effectif` int NOT NULL,
   PRIMARY KEY (`id_absence`),
   KEY `FKid_Effectif` (`id_Effectif`) USING BTREE
-) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=96 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `absence`
@@ -45,9 +45,18 @@ CREATE TABLE IF NOT EXISTS `absence` (
 
 INSERT INTO `absence` (`id_absence`, `codeAbsence`, `date`, `id_Effectif`) VALUES
 (1, 'Blessé', '2020-08-16', 1),
-(2, 'Suspendu', '2021-03-14', 2),
 (10, 'Suspendu', '2021-02-21', 3),
-(6, 'Blessé', '2021-03-29', 1);
+(63, 'Blessé', '2021-04-15', 1),
+(50, 'Blessé', '2021-03-10', 1),
+(59, 'Blessé', '2021-04-11', 1),
+(60, 'Blessé', '2021-04-12', 1),
+(61, 'Blessé', '2021-04-13', 1),
+(64, 'Blessé', '2021-04-16', 1),
+(65, 'Blessé', '2021-04-17', 1),
+(67, 'Blessé', '2021-03-11', 71),
+(77, 'Blessé', '2021-03-01', 31),
+(78, 'Absent', '2021-03-08', 4),
+(82, 'Blessé', '2021-03-15', 31);
 
 -- --------------------------------------------------------
 
@@ -67,7 +76,7 @@ CREATE TABLE IF NOT EXISTS `calendrierrencontre` (
   `terrain` varchar(255) NOT NULL,
   `site` varchar(255) NOT NULL,
   PRIMARY KEY (`id_rencontre`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=48 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `calendrierrencontre`
@@ -78,7 +87,9 @@ INSERT INTO `calendrierrencontre` (`id_rencontre`, `categorie`, `competition`, `
 (2, 'seniors', 'Coupe de l\'Anjou', 'SeniorsB', 'Valanjou AS 2', '2020-08-23', '15:00:00', 'Stade de contades', 'Allonnes'),
 (3, 'seniors', 'Coupe des Pays de la loire', 'SeniorsA', 'Angers NDC 2', '2020-08-23', '15:00:00', 'Stade andré bertin 1', 'Bellevigne en Layon'),
 (4, 'seniors', 'D4 Groupe E', 'SeniorsC', 'St Hilaire Vihiers 4', '2020-08-23', '15:00:00', 'Terrain A', 'Martigne'),
-(5, 'seniors', 'D1 Groupe A', 'SeniorsB', 'Angers NDC 2', '2021-03-28', '14:00:00', 'Stade andré bertin 1', 'Cersay');
+(45, 'seniors', 'Coupe de l\'Anjou', 'SeniorsC', 'Valanjou As 2', '2021-04-11', '17:00:00', 'Terrain A', 'Stade Municipal'),
+(44, 'seniors', 'Coupe des Pays de la loire', 'SeniorsB', 'Bouchemaine Es 3', '2021-04-11', '15:00:00', 'Stade Julien Lambert 1', 'St Melaine Sur Aubance'),
+(43, 'seniors', 'Coupe des Réserves', 'SeniorsA', 'Pellouailles Corze 1', '2021-04-11', '10:00:00', 'Stade Raymond Gaboriau 1', 'Sevremoine');
 
 -- --------------------------------------------------------
 
@@ -93,7 +104,7 @@ CREATE TABLE IF NOT EXISTS `convocation` (
   `id_rencontre` int NOT NULL,
   PRIMARY KEY (`id_convocation`),
   KEY `FKid_rencontre` (`id_rencontre`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `convocation`
@@ -118,7 +129,7 @@ CREATE TABLE IF NOT EXISTS `convoquee` (
   PRIMARY KEY (`id_convoquee`),
   KEY `FKid_Effectif` (`id_effectif`),
   KEY `FKid_convocation` (`id_convocation`)
-) ENGINE=MyISAM AUTO_INCREMENT=41 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=76 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `convoquee`
@@ -180,7 +191,7 @@ CREATE TABLE IF NOT EXISTS `effectif` (
   `nom` varchar(255) NOT NULL,
   `Licence` varchar(3) DEFAULT 'oui',
   PRIMARY KEY (`id_effectif`)
-) ENGINE=MyISAM AUTO_INCREMENT=65 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=78 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `effectif`
@@ -240,7 +251,6 @@ INSERT INTO `effectif` (`id_effectif`, `typeLicence`, `prenom`, `nom`, `Licence`
 (51, 'Libre', 'Robin', 'Delon', 'non'),
 (52, 'Libre', 'Timothé', 'Lefrançois', 'oui'),
 (53, 'Libre', 'Mathis', 'Pierlot', 'oui'),
-(55, 'Libre', 'yoann', 'jouvin', 'oui'),
 (56, 'Libre', 'celia', 'robin', 'oui'),
 (57, 'Libre', 'johan', 'larc', 'non'),
 (62, 'Libre', 'loupo', 'nathanaël', 'non'),
@@ -260,7 +270,7 @@ CREATE TABLE IF NOT EXISTS `utilisateur` (
   `prenom` varchar(255) NOT NULL,
   `type` enum('entraineur','secretaire') CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `adresseEmail` varchar(50) NOT NULL,
-  `motDePasse` varchar(50) NOT NULL,
+  `motDePasse` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   PRIMARY KEY (`id_utilisateur`)
 ) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
@@ -269,8 +279,8 @@ CREATE TABLE IF NOT EXISTS `utilisateur` (
 --
 
 INSERT INTO `utilisateur` (`id_utilisateur`, `nom`, `prenom`, `type`, `adresseEmail`, `motDePasse`) VALUES
-(1, 'Brosseau', 'Aurélien', 'entraineur', 'aurelien.brosseau@hotmail.com', 'mdpaurelien'),
-(2, 'Gaudreau', 'Frank', 'secretaire', 'frank.gaudreau@hotmail.com', 'mdpfrank');
+(1, 'Brosseau', 'Aurélien', 'entraineur', 'aurelien.brosseau@hotmail.com', '$2y$13$myy9JFVc8tcQAG.xBSShn.BFBIy01zaB11jGsOHevPELFWYaOS0LO'),
+(2, 'Gaudreau', 'Frank', 'secretaire', 'frank.gaudreau@hotmail.com', '$2y$13$/s.h3gxsmOAzyyFHOwgtueevBUxfQYhl/mkEWLxOCqhTCZUkUBCL6');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

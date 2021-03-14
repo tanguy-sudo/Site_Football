@@ -22,9 +22,9 @@ class ControleurAbsence extends Controleur {
             $absences =$this->absence->getAbsencesFilterDate();
             $this->genererVue(array('absences' => $absences));
 
-            if(isset($_SESSION['ajoutAb'])){
-             echo"              
-                <div class='toast align-items-center position-absolute top-50 start-50 translate-middle text-white bg-secondary' id='myToast' role='alert' aria-live='assertive' aria-atomic='true' data-bs-delay='1700'>
+            if(isset($_SESSION['ajoutAb'])){ 
+                echo"              
+                <div id='myToast'>
                     <div class='d-flex justify-content-center'>    
                         <div class='toast-body'>
                             Ajout réussi
@@ -32,12 +32,13 @@ class ControleurAbsence extends Controleur {
                     </div>
                 </div>
                 ";
+                echo"<script> toastFunction(); </script>";
                 unset($_SESSION['ajoutAb']);
             }
 
             if(isset($_SESSION['errAjoutAb'])){
                 echo"              
-                <div class='toast align-items-center position-absolute top-50 start-50 translate-middle text-white bg-secondary' id='myToast' role='alert' aria-live='assertive' aria-atomic='true' data-bs-delay='1700'>
+                <div id='myToast'>
                     <div class='d-flex justify-content-center'>    
                         <div class='toast-body'>
                             Cette personne est déjà absente cette journée
@@ -45,12 +46,13 @@ class ControleurAbsence extends Controleur {
                     </div>
                 </div>
                 ";
+                echo"<script> toastFunction(); </script>";
                 unset($_SESSION['errAjoutAb']);
             }
             
             if(isset($_SESSION['supAb'])){
                 echo"              
-                <div class='toast align-items-center position-absolute top-50 start-50 translate-middle text-white bg-secondary' id='myToast' role='alert' aria-live='assertive' aria-atomic='true' data-bs-delay='1700'>
+                <div id='myToast'>
                     <div class='d-flex justify-content-center'>    
                         <div class='toast-body'>
                             Absence supprimé
@@ -58,6 +60,7 @@ class ControleurAbsence extends Controleur {
                     </div>
                 </div>
                 ";
+                echo"<script> toastFunction(); </script>";
                 unset($_SESSION['supAb']);
             }
     }
@@ -78,6 +81,7 @@ class ControleurAbsence extends Controleur {
             $tabDates = explode(',', $dates);
             // je parcours toutes les dates selectionnées pour les insérer
             foreach($tabDates as $dateFr){
+                $dateFr = trim($dateFr);
                 $datePhp = implode('-', array_reverse(explode('/', $dateFr)));
                 $uneAbsence = $this->absence->getAbsence($id, $datePhp, $code);
 

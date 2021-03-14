@@ -10,9 +10,51 @@
                     </select>
                     <label for="floatingSelect">Effectifs</label>
         </div>
+       <!-- <div class="form-floating mb-3">-->
+                <!--<input type="text" class="form-control date" id="dateConv" name="date" value="<p?= date('d/m/Y');?>" required />-->
+                <!--<label for="dateConv">Date de convocation</label>-->
+        <!--</div>-->
         <div class="form-floating mb-3">
-                <input type="text" class="form-control date" id="dateConv" name="date" value="<?= date('d/m/Y');?>" required />
-                <label for="dateConv">Date de convocation</label>
+            <input type="text" id="selectedValues" class="form-control date-values" id="dateConv" name="date" value="<?= date('d/m/Y');?>" required readonly/>
+            <label for="dateConv">Date de convocation</label>
+            <div style="width: 24%;margin:20px;">
+                <div id="parent" class="container" style="display:none;">
+                    <div class="row header-row">
+                        <div class="col-xs previous">
+                            <a id="previous" onclick="previous()">
+                                <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                        <div class="card-header month-selected col-sm" id="monthAndYear">
+                        </div>
+                        <div class="col-sm">
+                            <select class="form-select col-xs-6" name="month" id="month" onchange="change()"></select>
+                        </div>
+                        <div class="col-sm">
+                            <select class="form-select col-xs-6" name="year" id="year" onchange="change()"></select>
+                        </div>
+                        <div class="col-xs next">
+                            <a id="next" onclick="next()">
+                                <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <table id="calendar">
+                        <thead>
+                            <tr>
+                                <th>D</th>
+                                <th>L</th>
+                                <th>M</th>
+                                <th>M</th>
+                                <th>J</th>
+                                <th>V</th>
+                                <th>S</th>
+                            </tr>
+                        </thead>
+                        <tbody id="calendarBody"></tbody>
+                    </table>
+                </div>
+            </div>
         </div>
         <div class="form-floating mb-3">
                     <select class="form-select" id="floatingSelect2" name="code" required>

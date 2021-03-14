@@ -14,4 +14,12 @@ class Utilisateur extends Modele {
         $utilisateur = $this->executerRequete($sql, array($Email, $password));
         return $utilisateur->fetch();
     }
+
+    public function getUserEmail($Email){
+        $sql = 'SELECT *  
+                FROM utilisateur u
+                WHERE u.adresseEmail=?';
+        $utilisateur = $this->executerRequete($sql, array($Email));
+        return $utilisateur->fetch();
+    }
 }

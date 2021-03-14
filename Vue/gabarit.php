@@ -4,11 +4,13 @@
         <meta charset="UTF-8" />
         <base href="<?= $racineWeb ?>" >
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
+        
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <link type="text/css" rel="stylesheet" href="Contenu/bootstrap/bootstrap-datepicker.css" />
+        <script type="text/javascript" src="Contenu/script.js"></script>
         <link type="text/css" rel="stylesheet" href="Contenu/style.css" />
         <link type="text/css" rel="stylesheet" href="Contenu/bootstrap/css/bootstrap.min.css" />
+        <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+          crossorigin="anonymous">
       
        <title><?= $titre ?></title>
     </head>  
@@ -25,7 +27,7 @@
                 <!-- on teste si l'utilisateur est un entraineur -->
                 <?php if($_SESSION['type'] == "entraineur") :?>
                   <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="dropdownConvocation" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle test" id="dropdownConvocation" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Convocation
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="dropdownConvocation">
@@ -39,7 +41,7 @@
                 <?php elseif($_SESSION['type'] == "secretaire") : ?>
                   <li class="nav-item"><a id="navConv" class="nav-link" href="convocation/index/">Convocation</a></li>
                   <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="dropdownRencontre" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" id="dropdownRencontre" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Rencontre
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="dropdownRencontre">
@@ -49,7 +51,7 @@
                     </ul>
                   </li>  
                   <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="dropdownEffectif" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" id="dropdownEffectif" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Effectif
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="dropdownEffectif">
@@ -59,7 +61,7 @@
                   </li>  
                 <?php endif; ?>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="dropdownAbsence" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" id="dropdownAbsence" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Absence
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="dropdownAbsence">
@@ -93,7 +95,4 @@
         </div>
       </footer>
     </body>
-<script src="Contenu/bootstrap/bootstrap-datepicker.js"></script>
-<script type="text/javascript" src="Contenu/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script type="text/javascript" src="Contenu/script.js"></script>
 </html>

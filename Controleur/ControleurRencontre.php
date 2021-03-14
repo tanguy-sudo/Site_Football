@@ -28,7 +28,7 @@ class ControleurRencontre extends Controleur {
 
         if(isset($_SESSION['errAjoutRen'])){
             echo"              
-            <div class='toast align-items-center position-absolute top-50 start-50 translate-middle text-white bg-secondary' id='myToast' role='alert' aria-live='assertive' aria-atomic='true' data-bs-delay='1700'>
+            <div id='myToast'>
                 <div class='d-flex justify-content-center'>    
                     <div class='toast-body'>
                         Cette rencontre existe déjà
@@ -36,12 +36,13 @@ class ControleurRencontre extends Controleur {
                 </div>
             </div>
             ";
+            echo"<script> toastFunction(); </script>";
             unset($_SESSION['errAjoutRen']);
         }
 
         if(isset($_SESSION['AjoutRen'])){
             echo"              
-            <div class='toast align-items-center position-absolute top-50 start-50 translate-middle text-white bg-secondary' id='myToast' role='alert' aria-live='assertive' aria-atomic='true' data-bs-delay='1700'>
+            <div id='myToast'>
                 <div class='d-flex justify-content-center'>    
                     <div class='toast-body'>
                         Ajout réussi
@@ -49,12 +50,13 @@ class ControleurRencontre extends Controleur {
                 </div>
             </div>
             ";
+            echo"<script> toastFunction(); </script>";
             unset($_SESSION['AjoutRen']);
         }
 
         if(isset($_SESSION['UpRen'])){
             echo"              
-            <div class='toast align-items-center position-absolute top-50 start-50 translate-middle text-white bg-secondary' id='myToast' role='alert' aria-live='assertive' aria-atomic='true' data-bs-delay='1700'>
+            <div id='myToast'>
                 <div class='d-flex justify-content-center'>    
                     <div class='toast-body'>
                         La rencontre a été mise à jour
@@ -62,12 +64,13 @@ class ControleurRencontre extends Controleur {
                 </div>
             </div>
             ";
+            echo"<script> toastFunction(); </script>";
             unset($_SESSION['UpRen']);
         }
 
         if(isset($_SESSION['errUpRen'])){
             echo"              
-            <div class='toast align-items-center position-absolute top-50 start-50 translate-middle text-white bg-secondary' id='myToast' role='alert' aria-live='assertive' aria-atomic='true' data-bs-delay='4000'>
+            <div id='myToast'>
                 <div class='d-flex justify-content-center'>    
                     <div class='toast-body'>
                         Cette rencontre ne peut pas être modifiée car elle est liée à une convocation
@@ -75,12 +78,13 @@ class ControleurRencontre extends Controleur {
                 </div>
             </div>
             ";
+            echo"<script> toastFunction(); </script>";
             unset($_SESSION['errUpRen']);
         }
 
         if(isset($_SESSION['DelRen'])){
             echo"              
-            <div class='toast align-items-center position-absolute top-50 start-50 translate-middle text-white bg-secondary' id='myToast' role='alert' aria-live='assertive' aria-atomic='true' data-bs-delay='4000'>
+            <div id='myToast'>
                 <div class='d-flex justify-content-center'>    
                     <div class='toast-body'>
                         Cette rencontre a bien été supprimé
@@ -88,12 +92,13 @@ class ControleurRencontre extends Controleur {
                 </div>
             </div>
             ";
+            echo"<script> toastFunction(); </script>";
             unset($_SESSION['DelRen']);
         }
 
         if(isset($_SESSION['ImportRen'])){
             echo"              
-            <div class='toast align-items-center position-absolute top-50 start-50 translate-middle text-white bg-secondary' id='myToast' role='alert' aria-live='assertive' aria-atomic='true' data-bs-delay='4000'>
+            <div id='myToast'>
                 <div class='d-flex justify-content-center'>    
                     <div class='toast-body'>
                         Import réussi
@@ -101,6 +106,7 @@ class ControleurRencontre extends Controleur {
                 </div>
             </div>
             ";
+            echo"<script> toastFunction(); </script>";
             unset($_SESSION['ImportRen']);
         }
     }

@@ -26,3 +26,181 @@ a.logo:hover {
     margin-left: 10% !important;
     margin-right: 10% !important;
 }
+
+.highlight {
+    background-color: lightblue;
+}
+
+#calendar-body td:empty {
+    cursor: text;
+    border: none;
+}
+
+#calendar-body td {
+    cursor: pointer;
+}
+
+#calendar thead {
+    border-bottom: 2px solid #cecece;
+}
+
+#calendar th {
+    border: none;
+    text-align: center;
+    padding: 0;
+    width: 10%;
+}
+
+#calendar td {
+    border: 1px solid rgba(0,0,0,.125);
+    text-align: center;
+    padding: 5px;
+    width: 10%;
+}
+
+.previous {
+    margin-top: 4% !important;
+    margin-left: 2% !important;
+}
+
+.next {
+    margin-top: 4% !important;
+    margin-right: 2% !important;
+}
+
+.round {
+    border-radius: 50%;
+}
+
+.month-selected {
+    font-family: inherit !important;
+    font-weight: 500 !important;
+    line-height: 1.2 !important;
+    color: inherit !important;
+}
+
+a:hover {
+    text-decoration: none !important;
+}
+
+
+.header {
+    margin-bottom: 0px !important;
+    background-color: #e7e7e7 !important;
+    border-bottom: 1px solid rgba(0,0,0,.125) !important;
+}
+
+.header-row {
+    background-color: lightgray !important;
+    margin: 0px !important;
+    padding: 5px !important;
+}
+
+#monthAndYear {
+    border-bottom: none !important;
+    background-color: transparent !important;
+    padding-left: 14px !important;
+    padding-right: 14px !important;
+    display: none !important;
+}
+
+#previous, #next {
+    color: darkslategrey !important;
+    cursor: pointer !important;
+}
+
+.today-color {
+    background-color: #D3D3D3;
+}
+
+#parent {
+    border: 2px solid rgba(0,0,0,.125) !important;
+    border-radius: .25rem !important;
+    padding: 5px !important;
+}
+
+.date-values {
+    width: 297px;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #cecece;
+
+}
+.form-control:read-only {
+    background-color: #fff !important;
+}
+
+
+.buttonPanel td {
+    border: none !important;
+    padding: 6px 0 0 0 !important;
+}
+
+    .buttonPanel td div:nth-of-type(odd) {
+        padding: 5px;
+        /*border: 1px solid #cecece;*/
+        width: 100%;
+        text-align: left;
+    }
+
+    .buttonPanel td div:nth-of-type(even) {
+        padding: 5px;
+        /*border: 1px solid #cecece;*/
+        width: 100%;
+        text-align: right;
+    }
+
+.buttonPanel-row {
+    margin: 0 !important;
+    border-top: 2px solid lightgray !important;
+}
+
+.btn-calendar{
+    background-color:#cecece !important;
+}
+
+.dropdown:hover > ul.dropdown-menu{
+    display: block;
+}
+
+#myToast {
+    visibility: hidden;
+    min-width: 250px;
+    margin-left: -125px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 2px;
+    padding: 16px;
+    position: fixed;
+    z-index: 1;
+    left: 50%;
+    bottom: 30px;
+    font-size: 17px;
+}
+
+#myToast.show {
+    visibility: visible;
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@-webkit-keyframes fadein {
+    from {bottom: 0; opacity: 0;} 
+    to {bottom: 30px; opacity: 1;}
+  }
+  
+  @keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+  }
+  
+  @-webkit-keyframes fadeout {
+    from {bottom: 30px; opacity: 1;} 
+    to {bottom: 0; opacity: 0;}
+  }
+  
+  @keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+  }
