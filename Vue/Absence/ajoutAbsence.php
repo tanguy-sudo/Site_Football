@@ -69,3 +69,21 @@
         </div>
     </form>
 </div> 
+
+<?php
+
+if(isset($_SESSION['errDate'])){ 
+                echo"              
+                <div id='myToast'>
+                    <div class='d-flex justify-content-center'>    
+                        <div class='toast-body'>
+                            Veillez indiqué une date
+                        </div>
+                    </div>
+                </div>
+                ";
+                echo"<script> toastFunction(); </script>";
+                unset($_SESSION['ajoutAb']);
+}
+
+?>

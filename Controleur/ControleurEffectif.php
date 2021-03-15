@@ -16,62 +16,6 @@ class ControleurEffectif extends Controleur {
         if($this->isConnect()){    
             $effectifs = $this->effectif->getEffectifs();
             $this->genererVue(array('effectifs' => $effectifs));
-
-            if(isset($_SESSION['ajoutEf'])){
-                echo"              
-                <div id='myToast'>
-                    <div class='d-flex justify-content-center'>    
-                        <div class='toast-body'>
-                            Ajout réussi
-                        </div>
-                    </div>
-                </div>
-                ";
-                echo"<script> toastFunction(); </script>";
-                unset($_SESSION['ajoutEf']);
-            }
-
-            if(isset($_SESSION['errAjoutEf'])){
-                echo"              
-                <div id='myToast'>
-                    <div class='d-flex justify-content-center'>    
-                        <div class='toast-body'>
-                            Cette personne existe déjà
-                        </div>
-                    </div>
-                </div>
-                ";
-                echo"<script> toastFunction(); </script>";
-                unset($_SESSION['errAjoutEf']);
-            }
-
-            if(isset($_SESSION['supEf'])){
-                echo"              
-                <div id='myToast'>
-                    <div class='d-flex justify-content-center'>    
-                        <div class='toast-body'>
-                            Suppression réussite
-                        </div>
-                    </div>
-                </div>
-                ";
-                echo"<script> toastFunction(); </script>";
-                unset($_SESSION['supEf']);
-            }
-
-            if(isset($_SESSION['upEf'])){
-                echo"              
-                <div id='myToast'>
-                    <div class='d-flex justify-content-center'>    
-                        <div class='toast-body'>
-                            Cette personne est licencié
-                        </div>
-                    </div>
-                </div>
-                ";
-                echo"<script> toastFunction(); </script>";
-                unset($_SESSION['upEf']);
-            }
         }
     }
 

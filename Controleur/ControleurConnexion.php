@@ -15,27 +15,14 @@ class ControleurConnexion extends Controleur {
 
     public function index() {
         $this->genererVue();
-        
-        if(isset($_SESSION['connErr'])){
-            echo"              
-            <div id='myToast'>
-                <div class='d-flex justify-content-center'>    
-                    <div class='toast-body'>
-                        Adresse email ou mot de passe erroné
-                    </div>
-                </div>
-            </div>
-            ";
-            echo"<script> toastFunction(); </script>";
-            unset($_SESSION['connErr']);
-        }
     }
 
     public function connex() {
         $Email = $this->requete->getParametre("Email");
         $password = $this->requete->getParametre("motDePasse");
         $user = $this->utilisateur->getUserEmail($Email);
-        $passwordCrypted = $user['motDePasse'];
+        
+        $passwordCrypted = empty($user['motDePasse']) ? "" : $user['motDePasse'];
  
         //teste l'existance de l'utilisateur
         if(password_verify($password, $passwordCrypted)) {

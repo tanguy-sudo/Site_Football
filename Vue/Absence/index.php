@@ -33,3 +33,49 @@
         </tbody>
     </table>
 </div>
+
+<?php
+
+if(isset($_SESSION['ajoutAb'])){ 
+                echo"              
+                <div id='myToast'>
+                    <div class='d-flex justify-content-center'>    
+                        <div class='toast-body'>
+                            Ajout réussi
+                        </div>
+                    </div>
+                </div>
+                ";
+                echo"<script> toastFunction(); </script>";
+                unset($_SESSION['ajoutAb']);
+}
+
+if(isset($_SESSION['errAjoutAb'])){
+    echo"              
+    <div id='myToast'>
+        <div class='d-flex justify-content-center'>    
+            <div class='toast-body'>
+                Cette personne est déjà absente cette journée
+            </div>
+        </div>
+    </div>
+    ";
+    echo"<script> toastFunction(); </script>";
+    unset($_SESSION['errAjoutAb']);
+}
+
+if(isset($_SESSION['supAb'])){
+    echo"              
+    <div id='myToast'>
+        <div class='d-flex justify-content-center'>    
+            <div class='toast-body'>
+                Absence supprimé
+            </div>
+        </div>
+    </div>
+    ";
+    echo"<script> toastFunction(); </script>";
+    unset($_SESSION['supAb']);
+}
+
+?>

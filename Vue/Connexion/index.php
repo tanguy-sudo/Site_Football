@@ -15,3 +15,21 @@
 		</div>
 	</form>	
 </div>
+
+<?php
+
+if(isset($_SESSION['connErr'])){
+	echo"              
+	<div id='myToast'>
+		<div class='d-flex justify-content-center'>    
+			<div class='toast-body'>
+				Adresse email ou mot de passe erroné
+			</div>
+		</div>
+	</div>
+	";
+	echo"<script> toastFunction(); </script>";
+	unset($_SESSION['connErr']);
+}
+
+?>
