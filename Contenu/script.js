@@ -29,7 +29,54 @@ $(document).ready(function(){
                         $('#dropdownEffectif').addClass('active');
                         break;
         }
-      })
+
+
+        var last_valid_selection = null;
+        $('#PlayerList0, #PlayerList1, #PlayerList2').change(function(event) {
+
+          if ($(this).val().length > 14) {
+
+            $(this).val(last_valid_selection);
+            alert("Vous pouvez sélectionner uniquement entre 11 et 14 personnes");
+          } else {
+            last_valid_selection = $(this).val();
+          }
+        });
+
+        $('#PlayerList0').change(function(event) {
+            var txt = $("#PlayerList0").val();
+            txt.forEach(element => $("#PlayerList1 option[value=" + element + "]").prop("disabled", true)); 
+            txt.forEach(element => $("#PlayerList2 option[value=" + element + "]").prop("disabled", true));  
+            var notSelected = $("#PlayerList0").find('option').not(':selected');
+            var array = notSelected.map(function () {
+                $("#PlayerList1 option[value=" + this.value + "]").prop("disabled", false); 
+                $("#PlayerList2 option[value=" + this.value + "]").prop("disabled", false); 
+            }).get();
+        });
+
+        $('#PlayerList1').change(function(event) {
+            var txt = $("#PlayerList1").val();
+            txt.forEach(element => $("#PlayerList0 option[value=" + element + "]").prop("disabled", true)); 
+            txt.forEach(element => $("#PlayerList2 option[value=" + element + "]").prop("disabled", true));  
+            var notSelected = $("#PlayerList1").find('option').not(':selected');
+            var array = notSelected.map(function () {
+                $("#PlayerList0 option[value=" + this.value + "]").prop("disabled", false); 
+                $("#PlayerList2 option[value=" + this.value + "]").prop("disabled", false); 
+            }).get();
+        });
+
+        $('#PlayerList2').change(function(event) {
+            var txt = $("#PlayerList2").val();
+            txt.forEach(element => $("#PlayerList0 option[value=" + element + "]").prop("disabled", true)); 
+            txt.forEach(element => $("#PlayerList1 option[value=" + element + "]").prop("disabled", true));  
+            var notSelected = $("#PlayerList2").find('option').not(':selected');
+            var array = notSelected.map(function () {
+                $("#PlayerList0 option[value=" + this.value + "]").prop("disabled", false); 
+                $("#PlayerList1 option[value=" + this.value + "]").prop("disabled", false); 
+            }).get();
+        });
+});
+      
       
 function $_GET_PATH() {
         var path = window.location.href.split("/");

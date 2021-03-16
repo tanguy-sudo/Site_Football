@@ -86,14 +86,14 @@ class Convocation extends Modele {
 		
 		}
 
-		public function addconvoc($id_rencontre,$id_effectif){      
+		public function addconvoc($id_convocation, $id_effectif){      
 			$sql='insert into convoquee(id_effectif,id_convocation) values(?,?)';
-			$this->executerRequete($sql, array($id_effectif,$id_rencontre));		
+			$this->executerRequete($sql, array($id_effectif, $id_convocation));		
 		}		
 		
-		public function creatconvoc($id_rencontre){
-		$sql="insert into convocation(id_rencontre) values(?)";
-			$this->executerRequete($sql, array($id_rencontre));	
+		public function creatconvoc($id_rencontre, $message){
+		$sql="insert into convocation(id_rencontre, messageRdv) values(?, ?)";
+			$this->executerRequete($sql, array($id_rencontre, $message));	
 		
 		}
 		
