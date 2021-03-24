@@ -77,7 +77,7 @@ if(isset($_SESSION['errDate'])){
                 <div id='myToast'>
                     <div class='d-flex justify-content-center'>    
                         <div class='toast-body'>
-                            Veillez indiqué une date
+                            Veuillez indiqué une date
                         </div>
                     </div>
                 </div>

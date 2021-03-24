@@ -54,3 +54,35 @@
             <?php endforeach; ?>
     </div>
 </div>
+
+<?php
+
+if(isset($_SESSION['supConv'])){
+    echo"              
+    <div id='myToast'>
+        <div class='d-flex justify-content-center'>    
+            <div class='toast-body'>
+                Suppression réussite
+            </div>
+        </div>
+    </div>
+    ";
+    echo"<script> toastFunction(); </script>";
+    unset($_SESSION['supConv']);
+}
+
+if(isset($_SESSION['AjoutConv'])){
+    echo"              
+    <div id='myToast'>
+        <div class='d-flex justify-content-center'>    
+            <div class='toast-body'>
+                Ajout réussi
+            </div>
+        </div>
+    </div>
+    ";
+    echo"<script> toastFunction(); </script>";
+    unset($_SESSION['AjoutConv']);
+    }
+
+?>

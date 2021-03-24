@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : Dim 14 mars 2021 à 16:37
+-- Généré le : mer. 24 mars 2021 à 17:36
 -- Version du serveur :  8.0.21
 -- Version de PHP : 7.4.9
 
@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS `absence` (
   `id_Effectif` int NOT NULL,
   PRIMARY KEY (`id_absence`),
   KEY `FKid_Effectif` (`id_Effectif`) USING BTREE
-) ENGINE=MyISAM AUTO_INCREMENT=96 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=114 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `absence`
@@ -45,6 +45,7 @@ CREATE TABLE IF NOT EXISTS `absence` (
 
 INSERT INTO `absence` (`id_absence`, `codeAbsence`, `date`, `id_Effectif`) VALUES
 (1, 'Blessé', '2020-08-16', 1),
+(99, 'Blessé', '2021-04-11', 2),
 (10, 'Suspendu', '2021-02-21', 3),
 (63, 'Blessé', '2021-04-15', 1),
 (50, 'Blessé', '2021-03-10', 1),
@@ -54,9 +55,24 @@ INSERT INTO `absence` (`id_absence`, `codeAbsence`, `date`, `id_Effectif`) VALUE
 (64, 'Blessé', '2021-04-16', 1),
 (65, 'Blessé', '2021-04-17', 1),
 (67, 'Blessé', '2021-03-11', 71),
+(102, 'Blessé', '2021-04-05', 31),
+(98, 'Blessé', '2021-04-11', 31),
 (77, 'Blessé', '2021-03-01', 31),
 (78, 'Absent', '2021-03-08', 4),
-(82, 'Blessé', '2021-03-15', 31);
+(105, 'Blessé', '2021-04-08', 31),
+(97, 'Blessé', '2021-03-15', 31),
+(100, 'Blessé', '2021-03-24', 31),
+(101, 'Blessé', '2021-04-04', 31),
+(103, 'Blessé', '2021-04-06', 31),
+(104, 'Blessé', '2021-04-07', 31),
+(106, 'Blessé', '2021-04-09', 31),
+(107, 'Blessé', '2021-04-10', 31),
+(108, 'Blessé', '2021-04-17', 31),
+(109, 'Blessé', '2021-04-16', 31),
+(110, 'Blessé', '2021-04-15', 31),
+(111, 'Blessé', '2021-04-14', 31),
+(112, 'Blessé', '2021-04-13', 31),
+(113, 'Blessé', '2021-04-12', 31);
 
 -- --------------------------------------------------------
 
@@ -76,20 +92,19 @@ CREATE TABLE IF NOT EXISTS `calendrierrencontre` (
   `terrain` varchar(255) NOT NULL,
   `site` varchar(255) NOT NULL,
   PRIMARY KEY (`id_rencontre`)
-) ENGINE=MyISAM AUTO_INCREMENT=48 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=65 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `calendrierrencontre`
 --
 
 INSERT INTO `calendrierrencontre` (`id_rencontre`, `categorie`, `competition`, `equipe`, `equipeAdverse`, `date`, `heure`, `terrain`, `site`) VALUES
-(1, 'seniors', 'Amical', 'SeniorsA', 'Ambillou ASVR 1', '2020-08-16', '14:45:00', 'Stade Alphonse leroi 1', 'Ambillou'),
 (2, 'seniors', 'Coupe de l\'Anjou', 'SeniorsB', 'Valanjou AS 2', '2020-08-23', '15:00:00', 'Stade de contades', 'Allonnes'),
 (3, 'seniors', 'Coupe des Pays de la loire', 'SeniorsA', 'Angers NDC 2', '2020-08-23', '15:00:00', 'Stade andré bertin 1', 'Bellevigne en Layon'),
 (4, 'seniors', 'D4 Groupe E', 'SeniorsC', 'St Hilaire Vihiers 4', '2020-08-23', '15:00:00', 'Terrain A', 'Martigne'),
-(45, 'seniors', 'Coupe de l\'Anjou', 'SeniorsC', 'Valanjou As 2', '2021-04-11', '17:00:00', 'Terrain A', 'Stade Municipal'),
-(44, 'seniors', 'Coupe des Pays de la loire', 'SeniorsB', 'Bouchemaine Es 3', '2021-04-11', '15:00:00', 'Stade Julien Lambert 1', 'St Melaine Sur Aubance'),
-(43, 'seniors', 'Coupe des Réserves', 'SeniorsA', 'Pellouailles Corze 1', '2021-04-11', '10:00:00', 'Stade Raymond Gaboriau 1', 'Sevremoine');
+(62, 'seniors', 'Coupe des Réserves', 'SeniorsA', 'Pellouailles Corze 1', '2021-04-11', '10:00:00', 'Stade Raymond Gaboriau 1', 'Sevremoine'),
+(63, 'seniors', 'Coupe des Pays de la loire', 'SeniorsB', 'Bouchemaine Es 3', '2021-04-11', '15:00:00', 'Stade Julien Lambert 1', 'St Melaine Sur Aubance'),
+(64, 'seniors', 'Coupe de l\'Anjou', 'SeniorsC', 'Valanjou As 2', '2021-04-11', '17:00:00', 'Terrain A', 'Stade Municipal');
 
 -- --------------------------------------------------------
 
@@ -101,19 +116,23 @@ DROP TABLE IF EXISTS `convocation`;
 CREATE TABLE IF NOT EXISTS `convocation` (
   `id_convocation` int NOT NULL AUTO_INCREMENT,
   `messageRdv` varchar(255) NOT NULL,
+  `publier` tinyint(1) NOT NULL DEFAULT '0',
   `id_rencontre` int NOT NULL,
   PRIMARY KEY (`id_convocation`),
   KEY `FKid_rencontre` (`id_rencontre`)
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=123 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `convocation`
 --
 
-INSERT INTO `convocation` (`id_convocation`, `messageRdv`, `id_rencontre`) VALUES
-(1, 'Venez habillé il fait froid', 2),
-(2, 'derrière le gymnase', 3),
-(3, 'En face d\'une superette ', 4);
+INSERT INTO `convocation` (`id_convocation`, `messageRdv`, `publier`, `id_rencontre`) VALUES
+(1, 'Venez habillé il fait froid', 1, 2),
+(2, 'derrière le gymnase', 1, 3),
+(3, 'En face d\'une superette ', 1, 4),
+(122, 'testC', 0, 64),
+(121, 'testB', 0, 63),
+(120, 'testA', 0, 62);
 
 -- --------------------------------------------------------
 
@@ -129,7 +148,7 @@ CREATE TABLE IF NOT EXISTS `convoquee` (
   PRIMARY KEY (`id_convoquee`),
   KEY `FKid_Effectif` (`id_effectif`),
   KEY `FKid_convocation` (`id_convocation`)
-) ENGINE=MyISAM AUTO_INCREMENT=76 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=1044 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `convoquee`
@@ -175,7 +194,41 @@ INSERT INTO `convoquee` (`id_convoquee`, `id_effectif`, `id_convocation`) VALUES
 (37, 38, 3),
 (38, 39, 3),
 (39, 40, 3),
-(40, 41, 3);
+(40, 41, 3),
+(1033, 36, 122),
+(1032, 30, 122),
+(1031, 7, 121),
+(1030, 25, 121),
+(1029, 47, 121),
+(1043, 12, 122),
+(1042, 46, 122),
+(1041, 45, 122),
+(1040, 11, 122),
+(1021, 3, 121),
+(1020, 26, 120),
+(1019, 42, 120),
+(1018, 63, 120),
+(1017, 56, 120),
+(1028, 24, 121),
+(1027, 6, 121),
+(1026, 50, 121),
+(1025, 5, 121),
+(1024, 37, 121),
+(1016, 44, 120),
+(1039, 10, 122),
+(1038, 9, 122),
+(1037, 8, 122),
+(1036, 48, 122),
+(1035, 29, 122),
+(1034, 35, 122),
+(1023, 4, 121),
+(1022, 28, 121),
+(1015, 40, 120),
+(1014, 38, 120),
+(1013, 32, 120),
+(1012, 34, 120),
+(1011, 41, 120),
+(1010, 33, 120);
 
 -- --------------------------------------------------------
 
@@ -191,7 +244,7 @@ CREATE TABLE IF NOT EXISTS `effectif` (
   `nom` varchar(255) NOT NULL,
   `Licence` varchar(3) DEFAULT 'oui',
   PRIMARY KEY (`id_effectif`)
-) ENGINE=MyISAM AUTO_INCREMENT=78 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=83 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `effectif`

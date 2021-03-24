@@ -31,8 +31,8 @@ class Effectif extends Modele {
         $sql = 'SELECT * 
                 FROM effectif
                 WHERE typeLicence = ? AND prenom = ? AND nom = ? AND Licence = ?';
-        $absence = $this->executerRequete($sql, array($type, $prenom, $nom, $Licencie));
-        return $absence->fetch();
+        $effectif = $this->executerRequete($sql, array($type, $prenom, $nom, $Licencie));
+        return $effectif->fetch();
     }
 
 //supprimer un effectif
@@ -50,4 +50,17 @@ class Effectif extends Modele {
                 WHERE id_effectif = ?";
         $this->executerRequete($sql, array($id));
     }
+    public function getEffectifNonAbs($date) {
+        $sql = "SELECT * 
+                FROM effectif
+                WHERE id_effectif NOT IN (SELECT id_Effectif FROM absence WHERE date = ?)
+                AND Licence = 'oui'
+                AND id_effectif NOT IN (SELECT id_effectif 
+                                        FROM convoquee co join convocation con ON co.id_convocation= con.id_convocation 
+                                                          join calendrierrencontre cal on con.id_rencontre=cal.id_rencontre
+                                        WHERE date = ? AND con.publier=true)
+                ORDER BY prenom";
+        $effectifs = $this->executerRequete($sql, array($date, $date));
+        return $effectifs->fetchAll();
+    }   
 }

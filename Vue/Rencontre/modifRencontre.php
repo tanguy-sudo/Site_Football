@@ -5,7 +5,7 @@
     <div class="form-row">
       <div class="row mb-3">
         <div class="form-floating col-md-6">
-          <input id="Categorie" type="text" class="form-control" name="categorie" value="<?= $this->nettoyer($rencontre['categorie']) ?>" required readonly>
+          <input id="Categorie" type="text" class="form-control" name="categorie" value="<?= $this->nettoyer($rencontre['categorie']) ?>" required disabled>
           <label for="Categorie">Catégorie</label>
         </div>    
         <div class="form-floating col-md-6">
@@ -18,7 +18,7 @@
       
       <div class="row mb-3">
         <div class="form-floating col-md-6">
-          <input id="Equipe" type="text" class="form-control" name="Equipe" value="<?= $this->nettoyer($rencontre['equipe']) ?> " required readonly>
+          <input id="Equipe" type="text" class="form-control" name="Equipe" value="<?= $this->nettoyer($rencontre['equipe']) ?> " required disabled>
           <label for="Equipe">Equipe</label>
         </div>
         <div class="form-floating col-md-6">

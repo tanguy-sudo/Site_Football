@@ -14,4 +14,14 @@ class Convoquee extends Modele {
         $this->executerRequete($sql, array($id_convocation));
     }
 
+// Renvoie les effectifs convoquee a une date
+    public function getEffectifConvoquee($date) {
+        $sql = 'SELECT *  
+                FROM calendrierrencontre ca JOIN convocation co ON ca.id_rencontre = co.id_rencontre
+                                            JOIN convoquee con ON co.id_convocation = con.id_convocation
+                WHERE ca.date=? AND publier=false';
+        $convocation = $this->executerRequete($sql, array($date));
+        return $convocation->fetchAll();
+    }
+
 }

@@ -11,7 +11,7 @@ class Convocation extends Modele {
         $sql = 'SELECT *  
                 FROM calendrierrencontre ca 
                 JOIN convocation co ON ca.id_rencontre = co.id_rencontre
-                WHERE ca.date=?';
+                WHERE ca.date=? AND publier=true';
         $convocation = $this->executerRequete($sql, array($date));
         return $convocation;
     }
@@ -20,7 +20,7 @@ class Convocation extends Modele {
         $sql = 'SELECT *  
                 FROM convoquee co 
                 JOIN effectif ef ON co.id_effectif = ef.id_effectif
-                ORDER BY ef.prenom';
+                ORDER BY ef.nom';
         $convocation = $this->executerRequete($sql);
             return $convocation->fetchAll();
     }
@@ -48,86 +48,43 @@ class Convocation extends Modele {
                 WHERE id_convocation = ?';
         $this->executerRequete($sql, array($id_convocation));
     }
-
-	public function delConvoque($id_convocation){
-		$sql="DELETE 
-                FROM convoquee
-                WHERE id_convocation = ?";
-                $this->executerRequete($sql,array($id_convocation));
-	}
     
-    
-    public function getdateConv(){
-		$sql= "SELECT DISTINCT date 
-					from calendrierrencontre ";
-		$convocation =$this->executerRequete($sql);
-			return $convocation->fetchAll();    
-    }
-
- public function getAbsence($id, $date) {
-        $sql = 'SELECT * 
-                FROM absence
-                WHERE  date = ? AND id_Effectif = ?';
-        $absence = $this->executerRequete($sql, array($date, $id));
-        return $absence->fetch();
-    }
-
-		public function geteffectifAbs($date,$dates){
-            $sql='select *
-				from effectif
-				where id_effectif not in (SELECT id_effectif 
-                FROM absence
-                WHERE  date = ? ) and id_effectif not in  (Select id_effectif
-                from convoquee co join  convocation ca ON co.id_convocation= ca.id_convocation join calendrierrencontre b on ca.id_rencontre=b.id_rencontre
-                where  date = ?)';
-            $lista=$this->executerRequete($sql,array($dates,$date));
-            	return $lista->fetchAll();
-		
-		
-		}
-
-		public function addconvoc($id_convocation, $id_effectif){      
-			$sql='insert into convoquee(id_effectif,id_convocation) values(?,?)';
-			$this->executerRequete($sql, array($id_effectif, $id_convocation));		
-		}		
-		
-		public function creatconvoc($id_rencontre, $message){
-		$sql="insert into convocation(id_rencontre, messageRdv) values(?, ?)";
-			$this->executerRequete($sql, array($id_rencontre, $message));	
-		
-		}
-		
-		
-		public function getidconv($id_rencontre){
-			$sql="select id_convocation from convocation where id_rencontre=$id_rencontre";
-			$conv=$this->executerRequete($sql, array($id_rencontre));
-			return $conv->fetch();	
-		}
-		
-		
-		public function getrencontre($date) {
-            $sql = 'SELECT *  
-                    FROM calendrierrencontre                 
-                    WHERE date=?';
-            $calendrier = $this->executerRequete($sql, array($date));
-            return $calendrier;
-        }
-        public function getrencontreF($date) {
-            $sql = 'SELECT *  
-                    FROM calendrierrencontre                 
-                    WHERE date=?';
-            $calendrier = $this->executerRequete($sql, array($date));
-            return $calendrier->fetchAll();
-        }
-    
-    public function getidrencontre($equipe,$date){
-     $sql = 'SELECT id_rencontre  
+    public function getrencontreF($date) {
+        $sql = 'SELECT *  
                 FROM calendrierrencontre                 
-                WHERE date=? and equipe=? ';
-        $calendrier = $this->executerRequete($sql, array($date,$equipe));
-        return $calendrier->fetch();
-    
-    
+                WHERE date=?';
+        $calendrier = $this->executerRequete($sql, array($date));
+        return $calendrier->fetchAll();
     }
 
+    public function creatconvoc($id_rencontre, $message, $publier){
+		$sql="INSERT INTO convocation(id_rencontre, messageRdv, publier) 
+              VALUES(?, ?, ?)";
+		$this->executerRequete($sql, array($id_rencontre, $message, $publier));			
+	}
+
+    // Renvoie la liste des convocation pour une date donnée
+    public function getConvocationSave() {
+        $sql = 'SELECT *  
+                FROM calendrierrencontre ca 
+                JOIN convocation co ON ca.id_rencontre = co.id_rencontre
+                WHERE publier=false';
+        $convocations = $this->executerRequete($sql);
+        return $convocations->fetchAll();
+    }
+
+    // Renvoie la liste des convocation pour une date donnée et qui ne sont pas publier
+    public function getConvocationNonPublier($date) {
+        $sql = 'SELECT *  
+                FROM calendrierrencontre ca 
+                JOIN convocation co ON ca.id_rencontre = co.id_rencontre
+                WHERE ca.date=? AND publier=false';
+        $convocation = $this->executerRequete($sql, array($date));
+        return $convocation;
+    }
+
+    public function addconvoc($id_convocation, $id_effectif){      
+        $sql='insert into convoquee(id_effectif,id_convocation) values(?,?)';
+        $this->executerRequete($sql, array($id_effectif, $id_convocation));		
+    }	
 }

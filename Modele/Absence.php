@@ -45,4 +45,15 @@ class Absence extends Modele {
         $this->executerRequete($sql, array($id));
     }
 
+    
+//retourne les absents pour une date
+    public function getAbsentDate($date) {
+        $sql = "SELECT * 
+                FROM absence a JOIN effectif e ON a.id_Effectif = e.id_effectif
+                WHERE  a.date = ?";
+        $absences = $this->executerRequete($sql, array($date));
+        return $absences->fetchAll();
+    }
+
+
 }

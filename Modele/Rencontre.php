@@ -87,4 +87,30 @@ public function updateRencontreAll($categorie, $competition, $Equipe, $EquipeAdv
         $this->executerRequete($sql, array($id_rencontre));
     }
 
+    public function getrencontreSansConvocation($date){
+        $sql = 'SELECT *  
+                FROM calendrierrencontre          
+                WHERE date=?
+                AND id_rencontre NOT IN ( SELECT id_rencontre FROM convocation)';
+        $calendrier = $this->executerRequete($sql, array($date));
+        return $calendrier;
+    }
+
+    public function getrencontreAvecConvocation($date){
+        $sql = 'SELECT *  
+                FROM calendrierrencontre ca JOIN convocation co ON ca.id_rencontre = co.id_rencontre
+                WHERE date=? AND co.publier=false';
+        $calendrier = $this->executerRequete($sql, array($date));
+        return $calendrier;
+    }
+
+    // Recuperation une rencontre par rapport a une date et une equipe
+    public function getRencontreEquipeDate($categorie, $Equipe, $date){
+        $sql = 'SELECT * 
+                FROM calendrierrencontre
+                WHERE categorie = ? AND equipe = ? AND date = ?';
+        $rencontre = $this->executerRequete($sql, array($categorie, $Equipe, $date));
+        return $rencontre->fetch();
+    }
+
 }

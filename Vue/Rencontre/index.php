@@ -53,7 +53,7 @@ if(isset($_SESSION['errAjoutRen'])){
     <div id='myToast'>
         <div class='d-flex justify-content-center'>    
             <div class='toast-body'>
-                Cette rencontre existe déjà
+                Cette equipe joue déjà ce jour là
             </div>
         </div>
     </div>
@@ -132,4 +132,17 @@ if(isset($_SESSION['ImportRen'])){
     unset($_SESSION['ImportRen']);
 }
 
+if(isset($_SESSION['errAjoutRenExist'])){
+    echo"              
+    <div id='myToast'>
+        <div class='d-flex justify-content-center'>    
+            <div class='toast-body'>
+                Cette rencontre existe déjà
+            </div>
+        </div>
+    </div>
+    ";
+    echo"<script> toastFunction(); </script>";
+    unset($_SESSION['errAjoutRenExist']);
+}
 ?>

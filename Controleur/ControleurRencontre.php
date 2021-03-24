@@ -50,14 +50,18 @@ class ControleurRencontre extends Controleur {
             && isset($date) && isset($heure) && isset($terrain) && isset($site)){
                 $res = $this->rencontre->getRencontre($categorie, $competition, $Equipe, $EquipeAdv, $date,
                 $heure, $terrain, $site);
-                if(!$res){
+                $res2 = $this->rencontre->getRencontreEquipeDate($categorie, $Equipe, $date);
+                if(!$res && !$res2){
                     $this->rencontre->addRencontre($categorie, $competition, $Equipe, $EquipeAdv, $date,
                     $heure, $terrain, $site);
                     $_SESSION['AjoutRen']='AjoutRen';
                     $this->executerAction('index');
                 }
-                else{
+                else if(!$res && $res2){
                     $_SESSION['errAjoutRen']='errAjoutRen';
+                    $this->executerAction('index');
+                }else {
+                    $_SESSION['errAjoutRenExist']='errAjoutRenExist';
                     $this->executerAction('index');
                 }
             }
@@ -133,7 +137,8 @@ class ControleurRencontre extends Controleur {
 
     public function import(){
         if($this->SecretaireisConnected()){
-            $fichier = $this->requete->getParametre("CsvFile");     
+            $fichier = $this->requete->getParametre("CsvFile");    
+            
             if (file_exists($fichier) && $id_file = fopen($fichier, "r")) {
                 while ($tab = fgetcsv($id_file, 200, ";")) {
                     //Si la première ligne du fichier contient les noms des colonnes on ne la lit pas
@@ -159,6 +164,9 @@ class ControleurRencontre extends Controleur {
                     }
                 }
                 fclose($id_file);
+            }else {
+                $_SESSION['errImport']='errImport';
+                $this->executerAction('importDonnee'); 
             }
         }
     }

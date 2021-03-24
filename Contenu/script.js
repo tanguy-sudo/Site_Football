@@ -30,52 +30,120 @@ $(document).ready(function(){
                         break;
         }
 
+        convocationListEffectifs();
 
-        var last_valid_selection = null;
-        $('#PlayerList0, #PlayerList1, #PlayerList2').change(function(event) {
 
-          if ($(this).val().length > 14) {
+        /*
+            var elementTBODY = document.querySelector('#tableAbsent > tbody');
+            var row = elementTBODY.rows;
+            var tabAbsent = [];
+            for (var j = 0; j < row.length; j++) {
+                tabAbsent.push(row[j].cells[2].innerText);
+            }
 
-            $(this).val(last_valid_selection);
-            alert("Vous pouvez sélectionner uniquement entre 11 et 14 personnes");
-          } else {
-            last_valid_selection = $(this).val();
-          }
-        });
+            $('#PlayerList0, #PlayerList1, #PlayerList2').change(function(event) { 
+                var notSelected0 = $("#PlayerList0").find('option').not(':selected').not(':disabled');
+                var elementTBODY = document.querySelector('#tableAbsent > tbody');
+                var row = elementTBODY.rows;
+                for (var j = 0; j < row.length; j++) {
+                    row[j].deleteCell(1);
+                }
 
-        $('#PlayerList0').change(function(event) {
-            var txt = $("#PlayerList0").val();
-            txt.forEach(element => $("#PlayerList1 option[value=" + element + "]").prop("disabled", true)); 
-            txt.forEach(element => $("#PlayerList2 option[value=" + element + "]").prop("disabled", true));  
-            var notSelected = $("#PlayerList0").find('option').not(':selected');
-            var array = notSelected.map(function () {
-                $("#PlayerList1 option[value=" + this.value + "]").prop("disabled", false); 
-                $("#PlayerList2 option[value=" + this.value + "]").prop("disabled", false); 
-            }).get();
-        });
+                var array = notSelected0.map(function () {
+                    /*var elementTR = document.createElement('tr');
+                    var elementTd = document.createElement('td');
+                    var txt = document.createTextNode(this.textContent);
+                    elementTd.appendChild(txt);
+                
+                    //elementTR.appendChild(elementTd);
+                    
+                    elementTBODY.appendChild(elementTR);
+                }).get();
+            });
+        */
 
-        $('#PlayerList1').change(function(event) {
-            var txt = $("#PlayerList1").val();
-            txt.forEach(element => $("#PlayerList0 option[value=" + element + "]").prop("disabled", true)); 
-            txt.forEach(element => $("#PlayerList2 option[value=" + element + "]").prop("disabled", true));  
-            var notSelected = $("#PlayerList1").find('option').not(':selected');
-            var array = notSelected.map(function () {
-                $("#PlayerList0 option[value=" + this.value + "]").prop("disabled", false); 
-                $("#PlayerList2 option[value=" + this.value + "]").prop("disabled", false); 
-            }).get();
-        });
 
-        $('#PlayerList2').change(function(event) {
-            var txt = $("#PlayerList2").val();
-            txt.forEach(element => $("#PlayerList0 option[value=" + element + "]").prop("disabled", true)); 
-            txt.forEach(element => $("#PlayerList1 option[value=" + element + "]").prop("disabled", true));  
-            var notSelected = $("#PlayerList2").find('option').not(':selected');
-            var array = notSelected.map(function () {
-                $("#PlayerList0 option[value=" + this.value + "]").prop("disabled", false); 
-                $("#PlayerList1 option[value=" + this.value + "]").prop("disabled", false); 
-            }).get();
-        });
 });
+
+
+
+function ListEffectifs(){
+        var txt0 = $("#PlayerList0").val();
+        txt0.forEach(element => $("#PlayerList1 option[value=" + element + "]").prop("disabled", true)); 
+        txt0.forEach(element => $("#PlayerList2 option[value=" + element + "]").prop("disabled", true));  
+        var notSelected0 = $("#PlayerList0").find('option').not(':selected').not(':disabled');
+        var array = notSelected0.map(function () {
+            $("#PlayerList1 option[value=" + this.value + "]").prop("disabled", false); 
+            $("#PlayerList2 option[value=" + this.value + "]").prop("disabled", false); 
+        }).get();
+    
+
+        var txt1 = $("#PlayerList1").val();
+        txt1.forEach(element => $("#PlayerList0 option[value=" + element + "]").prop("disabled", true)); 
+        txt1.forEach(element => $("#PlayerList2 option[value=" + element + "]").prop("disabled", true));  
+        var notSelected1 = $("#PlayerList1").find('option').not(':selected').not(':disabled');;
+        var array = notSelected1.map(function () {
+            $("#PlayerList0 option[value=" + this.value + "]").prop("disabled", false); 
+            $("#PlayerList2 option[value=" + this.value + "]").prop("disabled", false); 
+        }).get();
+
+        var txt2 = $("#PlayerList2").val();
+        txt2.forEach(element => $("#PlayerList0 option[value=" + element + "]").prop("disabled", true)); 
+        txt2.forEach(element => $("#PlayerList1 option[value=" + element + "]").prop("disabled", true));  
+        var notSelected2 = $("#PlayerList2").find('option').not(':selected').not(':disabled');;
+        var array = notSelected2.map(function () {
+            $("#PlayerList0 option[value=" + this.value + "]").prop("disabled", false); 
+            $("#PlayerList1 option[value=" + this.value + "]").prop("disabled", false); 
+        }).get();    
+}
+
+function convocationListEffectifs(){
+
+    var last_valid_selection = null;
+    $('#PlayerList0, #PlayerList1, #PlayerList2').change(function(event) {
+
+      if ($(this).val().length > 14) {
+
+        $(this).val(last_valid_selection);
+        alert("Vous pouvez sélectionner uniquement entre 11 et 14 personnes");
+      } else {
+        last_valid_selection = $(this).val();
+      }
+    });
+
+    $('#PlayerList0').change(function(event) {
+        var txt = $("#PlayerList0").val();
+        txt.forEach(element => $("#PlayerList1 option[value=" + element + "]").prop("disabled", true)); 
+        txt.forEach(element => $("#PlayerList2 option[value=" + element + "]").prop("disabled", true));  
+        var notSelected0 = $("#PlayerList0").find('option').not(':selected').not(':disabled');
+        var array = notSelected0.map(function () {
+            $("#PlayerList1 option[value=" + this.value + "]").prop("disabled", false); 
+            $("#PlayerList2 option[value=" + this.value + "]").prop("disabled", false); 
+        }).get();
+    });
+
+    $('#PlayerList1').change(function(event) {
+        var txt = $("#PlayerList1").val();
+        txt.forEach(element => $("#PlayerList0 option[value=" + element + "]").prop("disabled", true)); 
+        txt.forEach(element => $("#PlayerList2 option[value=" + element + "]").prop("disabled", true));  
+        var notSelected1 = $("#PlayerList1").find('option').not(':selected').not(':disabled');;
+        var array = notSelected1.map(function () {
+            $("#PlayerList0 option[value=" + this.value + "]").prop("disabled", false); 
+            $("#PlayerList2 option[value=" + this.value + "]").prop("disabled", false); 
+        }).get();
+    });
+
+    $('#PlayerList2').change(function(event) {
+        var txt = $("#PlayerList2").val();
+        txt.forEach(element => $("#PlayerList0 option[value=" + element + "]").prop("disabled", true)); 
+        txt.forEach(element => $("#PlayerList1 option[value=" + element + "]").prop("disabled", true));  
+        var notSelected2 = $("#PlayerList2").find('option').not(':selected').not(':disabled');;
+        var array = notSelected2.map(function () {
+            $("#PlayerList0 option[value=" + this.value + "]").prop("disabled", false); 
+            $("#PlayerList1 option[value=" + this.value + "]").prop("disabled", false); 
+        }).get();    
+    });
+}
       
       
 function $_GET_PATH() {

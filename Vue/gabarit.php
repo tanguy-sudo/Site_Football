@@ -32,6 +32,7 @@
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="dropdownConvocation">
                       <li><a class="dropdown-item" href="convocation/ajoutConvocation/">Ajouter une convocations</a></li>
+                      <li><a class="dropdown-item" href="convocation/convocationSauvegardees/">Convocations sauvegardées</a></li>
                       <li><a class="dropdown-item" href="convocation/index/">Voir les convocations</a></li>
                     </ul>
                   </li>                   
