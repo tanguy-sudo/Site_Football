@@ -159,11 +159,11 @@ class ControleurRencontre extends Controleur {
                             $this->rencontre->addRencontre($categorie, $competition, $Equipe, $EquipeAdverse, $date,
                             $heure, $terrain, $site);        
                         }
-                        $_SESSION['ImportRen']='ImportRen';
-                        $this->executerAction('index'); 
                     }
                 }
                 fclose($id_file);
+                $_SESSION['ImportRen']='ImportRen';
+                $this->executerAction('index'); 
             }else {
                 $_SESSION['errImport']='errImport';
                 $this->executerAction('importDonnee'); 

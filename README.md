@@ -27,7 +27,9 @@ Pour installer le projet vous pouvez le cloner avec une clé SSH, ou bien télé
 $ git clone git@github.com:tanguy-sudo/Site_Football.git
 
 ```
-Vous devez Importer la base de données se trouvant dans le dossier BD du projet, celle-ci contient déjà l'instruction ```CREATE DATABASE```.
+Vous devez Importer la base de données se trouvant dans le dossier ```BD``` du projet, celle-ci contient déjà l'instruction ```CREATE DATABASE```.
+
+Vous devez configurer les fichiers ```dev.ini``` et ```prod.ini``` dans le dossier ```Config``` du projet en y mettant l'identifiant et le mot de passe de la base de données.
 
 Sur le site vous pouvez vous connecter en tant que ```Entraîneur``` ou ```Secrétaire```
 
@@ -42,7 +44,7 @@ Identifiant : ```frank.gaudreau@hotmail.com```
 mot de passe : ```mdpfrank``` 
 ## Collaboration
 ***
-Ce projer a été réalisé en collaboration avec Dorian LETORT
+Ce projer a été réalisé en collaboration avec Tanguy JOUVIN et Dorian LETORT.
 ## FAQs
 ***
 Une liste de questions fréquemment posées :
