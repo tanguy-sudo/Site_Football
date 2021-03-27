@@ -9,13 +9,7 @@ use Exception;
 //require_once 'Requete.php';
 //require_once 'Vue.php';
 
-/**
- * Classe abstraite Controleur
- * Fournit des services communs aux classes Controleur dérivées
- * 
- * @version 1.0
- * @author Baptiste Pesquet
- */
+
 abstract class Controleur {
 
     /** Action à réaliser */
@@ -24,22 +18,13 @@ abstract class Controleur {
     /** Requête entrante */
     protected $requete;
 
-    /**
-     * Définit la requête entrante
-     * 
-     * @param Requete $requete Requete entrante
-     */
+
     public function setRequete(Requete $requete)
     {
         $this->requete = $requete;
     }
 
-    /**
-     * Exécute l'action à réaliser.
-     * Appelle la méthode portant le même nom que l'action sur l'objet Controleur courant
-     * 
-     * @throws Exception Si l'action n'existe pas dans la classe Controleur courante
-     */
+
     public function executerAction($action)
     {
         if (method_exists($this, $action)) {
@@ -58,11 +43,7 @@ abstract class Controleur {
      */
     public abstract function index();
 
-    /**
-     * Génère la vue associée au contrôleur courant
-     * 
-     * @param array $donneesVue Données nécessaires pour la génération de la vue
-     */
+
     protected function genererVue($donneesVue = array())
     {
         // Détermination du nom du fichier vue à partir du nom du contrôleur actuel
@@ -83,7 +64,7 @@ abstract class Controleur {
         }
     }
 
-// Permets de vérifier que seul les personnes connectées peuvent accéder à la page
+// Permets de vérifier que seul le secretaire peut accéder à la page
     protected function SecretaireisConnected(){
         if(isset($_SESSION['valideConnexion']) && $_SESSION['valideConnexion'] == true &&  $_SESSION['type'] == 'secretaire'){
                 return true;
@@ -92,7 +73,7 @@ abstract class Controleur {
         }
     }
 
-// Permets de vérifier que seul les personnes connectées peuvent accéder à la page
+// Permets de vérifier que seul l'entraineur peut accéder à la page
     protected function EntraineurisConnected(){
         if(isset($_SESSION['valideConnexion']) && $_SESSION['valideConnexion'] == true &&  $_SESSION['type'] == 'entraineur'){
                 return true;

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : mer. 24 mars 2021 à 17:36
+-- Généré le : sam. 27 mars 2021 à 11:36
 -- Version du serveur :  8.0.21
 -- Version de PHP : 7.4.9
 
@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS `absence` (
   `id_Effectif` int NOT NULL,
   PRIMARY KEY (`id_absence`),
   KEY `FKid_Effectif` (`id_Effectif`) USING BTREE
-) ENGINE=MyISAM AUTO_INCREMENT=114 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=122 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `absence`
@@ -72,7 +72,15 @@ INSERT INTO `absence` (`id_absence`, `codeAbsence`, `date`, `id_Effectif`) VALUE
 (110, 'Blessé', '2021-04-15', 31),
 (111, 'Blessé', '2021-04-14', 31),
 (112, 'Blessé', '2021-04-13', 31),
-(113, 'Blessé', '2021-04-12', 31);
+(113, 'Blessé', '2021-04-12', 31),
+(114, 'Suspendu', '2021-04-18', 31),
+(115, 'Suspendu', '2021-04-19', 31),
+(116, 'Suspendu', '2021-04-20', 31),
+(117, 'Suspendu', '2021-04-21', 31),
+(118, 'Suspendu', '2021-04-22', 31),
+(119, 'Suspendu', '2021-04-23', 31),
+(120, 'Suspendu', '2021-04-24', 31),
+(121, 'Blessé', '2021-04-18', 1);
 
 -- --------------------------------------------------------
 
@@ -92,7 +100,7 @@ CREATE TABLE IF NOT EXISTS `calendrierrencontre` (
   `terrain` varchar(255) NOT NULL,
   `site` varchar(255) NOT NULL,
   PRIMARY KEY (`id_rencontre`)
-) ENGINE=MyISAM AUTO_INCREMENT=65 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=71 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `calendrierrencontre`
@@ -102,9 +110,12 @@ INSERT INTO `calendrierrencontre` (`id_rencontre`, `categorie`, `competition`, `
 (2, 'seniors', 'Coupe de l\'Anjou', 'SeniorsB', 'Valanjou AS 2', '2020-08-23', '15:00:00', 'Stade de contades', 'Allonnes'),
 (3, 'seniors', 'Coupe des Pays de la loire', 'SeniorsA', 'Angers NDC 2', '2020-08-23', '15:00:00', 'Stade andré bertin 1', 'Bellevigne en Layon'),
 (4, 'seniors', 'D4 Groupe E', 'SeniorsC', 'St Hilaire Vihiers 4', '2020-08-23', '15:00:00', 'Terrain A', 'Martigne'),
-(62, 'seniors', 'Coupe des Réserves', 'SeniorsA', 'Pellouailles Corze 1', '2021-04-11', '10:00:00', 'Stade Raymond Gaboriau 1', 'Sevremoine'),
-(63, 'seniors', 'Coupe des Pays de la loire', 'SeniorsB', 'Bouchemaine Es 3', '2021-04-11', '15:00:00', 'Stade Julien Lambert 1', 'St Melaine Sur Aubance'),
-(64, 'seniors', 'Coupe de l\'Anjou', 'SeniorsC', 'Valanjou As 2', '2021-04-11', '17:00:00', 'Terrain A', 'Stade Municipal');
+(65, 'seniors', 'Coupe des Réserves', 'SeniorsA', 'Pellouailles Corze 1', '2021-04-11', '10:00:00', 'Stade Raymond Gaboriau 1', 'Sevremoine'),
+(66, 'seniors', 'Coupe des Pays de la loire', 'SeniorsB', 'Bouchemaine Es 3', '2021-04-11', '15:00:00', 'Stade Julien Lambert 1', 'St Melaine Sur Aubance'),
+(67, 'seniors', 'Coupe de l\'Anjou', 'SeniorsC', 'Valanjou As 2', '2021-04-11', '17:00:00', 'Terrain A', 'Stade Municipal'),
+(68, 'seniors', 'Coupe de France', 'SeniorsA', 'AMBILLOU ASVR 2', '2021-04-18', '14:00:00', 'Stade andré laurent', 'Ambillou'),
+(69, 'seniors', 'Coupe des Réserves', 'SeniorsB', 'CORON OSTVC 2', '2021-04-18', '16:00:00', 'STADE DES RONDIÈRES', 'LES ROSIERS SUR LOIRE'),
+(70, 'seniors', 'D4 Groupe E', 'SeniorsC', 'SAUMUR OFC 3', '2021-04-18', '10:00:00', 'TERRAIN A', 'MARTIGNE');
 
 -- --------------------------------------------------------
 
@@ -120,7 +131,7 @@ CREATE TABLE IF NOT EXISTS `convocation` (
   `id_rencontre` int NOT NULL,
   PRIMARY KEY (`id_convocation`),
   KEY `FKid_rencontre` (`id_rencontre`)
-) ENGINE=MyISAM AUTO_INCREMENT=123 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=129 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `convocation`
@@ -130,9 +141,12 @@ INSERT INTO `convocation` (`id_convocation`, `messageRdv`, `publier`, `id_rencon
 (1, 'Venez habillé il fait froid', 1, 2),
 (2, 'derrière le gymnase', 1, 3),
 (3, 'En face d\'une superette ', 1, 4),
-(122, 'testC', 0, 64),
-(121, 'testB', 0, 63),
-(120, 'testA', 0, 62);
+(126, 'il pleut', 0, 68),
+(125, 'testC', 0, 67),
+(123, 'testA', 0, 65),
+(124, 'testB', 0, 66),
+(127, 'il fait beau', 0, 69),
+(128, 'il fait froid', 0, 70);
 
 -- --------------------------------------------------------
 
@@ -148,7 +162,7 @@ CREATE TABLE IF NOT EXISTS `convoquee` (
   PRIMARY KEY (`id_convoquee`),
   KEY `FKid_Effectif` (`id_effectif`),
   KEY `FKid_convocation` (`id_convocation`)
-) ENGINE=MyISAM AUTO_INCREMENT=1044 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=1119 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `convoquee`
@@ -195,40 +209,81 @@ INSERT INTO `convoquee` (`id_convoquee`, `id_effectif`, `id_convocation`) VALUES
 (38, 39, 3),
 (39, 40, 3),
 (40, 41, 3),
-(1033, 36, 122),
-(1032, 30, 122),
-(1031, 7, 121),
-(1030, 25, 121),
-(1029, 47, 121),
-(1043, 12, 122),
-(1042, 46, 122),
-(1041, 45, 122),
-(1040, 11, 122),
-(1021, 3, 121),
-(1020, 26, 120),
-(1019, 42, 120),
-(1018, 63, 120),
-(1017, 56, 120),
-(1028, 24, 121),
-(1027, 6, 121),
-(1026, 50, 121),
-(1025, 5, 121),
-(1024, 37, 121),
-(1016, 44, 120),
-(1039, 10, 122),
-(1038, 9, 122),
-(1037, 8, 122),
-(1036, 48, 122),
-(1035, 29, 122),
-(1034, 35, 122),
-(1023, 4, 121),
-(1022, 28, 121),
-(1015, 40, 120),
-(1014, 38, 120),
-(1013, 32, 120),
-(1012, 34, 120),
-(1011, 41, 120),
-(1010, 33, 120);
+(1109, 35, 128),
+(1108, 36, 128),
+(1107, 30, 128),
+(1106, 7, 127),
+(1098, 4, 127),
+(1097, 28, 127),
+(1096, 3, 127),
+(1095, 26, 127),
+(1094, 42, 126),
+(1093, 63, 126),
+(1092, 56, 126),
+(1091, 2, 126),
+(1077, 12, 125),
+(1076, 46, 125),
+(1054, 26, 123),
+(1053, 42, 123),
+(1052, 63, 123),
+(1105, 25, 127),
+(1104, 47, 127),
+(1103, 24, 127),
+(1102, 6, 127),
+(1101, 50, 127),
+(1090, 44, 126),
+(1087, 32, 126),
+(1086, 34, 126),
+(1085, 41, 126),
+(1084, 33, 126),
+(1083, 1, 126),
+(1082, 31, 126),
+(1081, 15, 125),
+(1080, 14, 125),
+(1079, 13, 125),
+(1078, 53, 125),
+(1075, 45, 125),
+(1089, 40, 126),
+(1100, 5, 127),
+(1099, 37, 127),
+(1088, 38, 126),
+(1117, 46, 128),
+(1116, 45, 128),
+(1115, 11, 128),
+(1114, 10, 128),
+(1113, 9, 128),
+(1112, 8, 128),
+(1111, 48, 128),
+(1110, 29, 128),
+(1074, 11, 125),
+(1073, 10, 125),
+(1118, 12, 128),
+(1072, 9, 125),
+(1051, 56, 123),
+(1065, 7, 124),
+(1064, 25, 124),
+(1063, 47, 124),
+(1062, 24, 124),
+(1050, 44, 123),
+(1049, 40, 123),
+(1048, 38, 123),
+(1047, 32, 123),
+(1046, 34, 123),
+(1061, 6, 124),
+(1071, 8, 125),
+(1070, 48, 125),
+(1069, 29, 124),
+(1068, 35, 124),
+(1067, 36, 124),
+(1066, 30, 124),
+(1045, 41, 123),
+(1044, 33, 123),
+(1060, 50, 124),
+(1059, 5, 124),
+(1058, 37, 124),
+(1057, 4, 124),
+(1056, 28, 123),
+(1055, 3, 123);
 
 -- --------------------------------------------------------
 
