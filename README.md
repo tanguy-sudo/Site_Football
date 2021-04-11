@@ -6,7 +6,7 @@
 5. [FAQs](#faqs)
 ### Info Générale
 ***
-Ce projet a été réalisé dans la cadre de ma formation en licence informatique à l'université d'Angers en 3ème années pour le cours de développement web. 
+Ce projet a été réalisé dans le cadre de ma formation en licence informatique à l'université d'Angers en 3ème années pour le cours de développement web. 
 ### Screenshot
 ![Image text](Contenu/images/readmeImage.png)
 ## Technologies
